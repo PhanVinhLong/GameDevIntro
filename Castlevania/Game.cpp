@@ -55,7 +55,7 @@ void CGame::Init(HWND hWnd)
 /*
 	Utility function to wrap LPD3DXSPRITE::Draw
 */
-void CGame::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha)
+void CGame::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha, int isFlippedHorizontally)
 {
 	D3DXVECTOR3 p(x, y, 0);
 	RECT r;
@@ -63,7 +63,20 @@ void CGame::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top
 	r.top = top;
 	r.right = right;
 	r.bottom = bottom;
+	
+	D3DXMATRIX mPre;
+	D3DXMATRIX mFlipped;
+	spriteHandler->GetTransform(&mPre);
+
+	if (isFlippedHorizontally == 1) {
+		spriteHandler->GetTransform(&mFlipped);
+		D3DXMatrixScaling(&mFlipped, -1.0f, 1.0f, .0f);
+		spriteHandler->SetTransform(&mFlipped);
+		p.x = -p.x - (right - left);
+	}
+
 	spriteHandler->Draw(texture, &r, NULL, &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
+	spriteHandler->SetTransform(&mPre);
 }
 
 int CGame::IsKeyDown(int KeyCode)
@@ -296,6 +309,7 @@ void CGame::SweptAABB(
 		nx = 0.0f;
 		dy > 0 ? ny = -1.0f : ny = 1.0f;
 	}
+
 }
 
 CGame *CGame::GetInstance()

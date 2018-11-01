@@ -32,7 +32,7 @@ struct CCollisionEvent
 
 class CGameObject
 {
-public:
+protected:
 
 	float x;
 	float y;
