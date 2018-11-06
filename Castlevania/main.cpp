@@ -23,15 +23,15 @@
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
-#define BACKGROUND_COLOR D3DCOLOR_XRGB(0, 0, 0)
-#define SCREEN_WIDTH 320
-#define SCREEN_HEIGHT 240
+#define BACKGROUND_COLOR D3DCOLOR_XRGB(255, 255, 200)
+#define SCREEN_WIDTH	320
+#define SCREEN_HEIGHT	240
 
-#define MAX_FRAME_RATE 120
+#define MAX_FRAME_RATE	120
 
-#define ID_TEX_SIMON 0
-#define ID_TEX_ENEMY 10
-#define ID_TEX_MISC 20
+#define ID_TEX_SIMON	0
+#define ID_TEX_ENEMY	10
+#define ID_TEX_MISC		20
 
 CGame *game;
 
@@ -73,7 +73,9 @@ void CSampleKeyHander::OnKeyUp(int KeyCode)
 void CSampleKeyHander::KeyState(BYTE *states)
 {
 	// disable control key when Mario die 
-	if (simon->GetState() == SIMON_STATE_DIE) return;
+	if (simon->GetState() == SIMON_STATE_DIE)
+		return;
+
 	if (game->IsKeyDown(DIK_RIGHT))
 		simon->SetState(SIMON_STATE_WALKING_RIGHT);
 	else if (game->IsKeyDown(DIK_LEFT))
@@ -118,49 +120,41 @@ void LoadResources()
 
 	LPDIRECT3DTEXTURE9 texSimon = textures->Get(ID_TEX_SIMON);
 
-	//sprites->Add(10001, 105, 8, 121, 39, texSimon);		// idle right
-	sprites->Add(10001, 105, 8, 121, 39, texSimon, 1);
-	sprites->Add(10002, 105, 8, 121, 39, texSimon, 1);		// walk
-	sprites->Add(10003, 132, 8, 147, 39, texSimon, 1);
-	sprites->Add(10004, 160, 8, 176, 39, texSimon, 1);
-	sprites->Add(10005, 132, 8, 147, 39, texSimon, 1);
+	sprites->Add(10001, 105, 8, 121, 39, texSimon, 1, { -10, -10 });		// idle right
+	sprites->Add(10002, 105, 8, 121, 39, texSimon, 1, { -10, -10 });		// walk
+	sprites->Add(10003, 132, 8, 147, 39, texSimon, 1, { -10, -10 });
+	sprites->Add(10004, 160, 8, 176, 39, texSimon, 1, { -10, -10 });
+	sprites->Add(10005, 132, 8, 147, 39, texSimon, 1, { -10, -10 });
 
-	sprites->Add(10011, 105, 8, 121, 39, texSimon);		// idle left
-	sprites->Add(10012, 105, 8, 121, 39, texSimon);		// walk
+	sprites->Add(10011, 105, 8, 121, 39, texSimon);			// idle left
+	sprites->Add(10012, 105, 8, 121, 39, texSimon);			// walk
 	sprites->Add(10013, 132, 8, 147, 39, texSimon);
 	sprites->Add(10014, 160, 8, 176, 39, texSimon);
 	sprites->Add(10015, 132, 8, 147, 39, texSimon);
 
 	sprites->Add(10099, 215, 120, 231, 135, texSimon);		// die
 
-
 	LPDIRECT3DTEXTURE9 texMisc = textures->Get(ID_TEX_MISC);
 	sprites->Add(20001, 408, 225, 424, 241, texMisc);
 
-	LPDIRECT3DTEXTURE9 texEnemy = textures->Get(ID_TEX_ENEMY);
-	sprites->Add(30001, 5, 14, 21, 29, texEnemy);
-	sprites->Add(30002, 25, 14, 41, 29, texEnemy);
-
-	sprites->Add(30003, 45, 21, 61, 29, texEnemy); // die sprite
-
 	LPANIMATION ani;
 
-	ani = new CAnimation(100);	// idle big right
+	ani = new CAnimation(100);		// idle right
 	ani->Add(10001);
 	animations->Add(400, ani);
 
-	ani = new CAnimation(100);	// idle big left
+	ani = new CAnimation(100);		// idle left
 	ani->Add(10011);
 	animations->Add(401, ani);
 
-	ani = new CAnimation(100);	// walk right big
+	ani = new CAnimation(100);		// walk right
 	ani->Add(10002);
 	ani->Add(10003);
 	ani->Add(10004);
 	ani->Add(10005);
 	animations->Add(500, ani);
 
-	ani = new CAnimation(100);	// // walk left big
+	ani = new CAnimation(100);		// walk left
 	ani->Add(10012);
 	ani->Add(10013);
 	ani->Add(10014);
@@ -168,7 +162,7 @@ void LoadResources()
 	animations->Add(501, ani);
 
 
-	ani = new CAnimation(100);		// Mario die
+	ani = new CAnimation(100);		// die
 	ani->Add(10099);
 	animations->Add(599, ani);
 
@@ -178,28 +172,12 @@ void LoadResources()
 	ani->Add(20001);
 	animations->Add(601, ani);
 
-	ani = new CAnimation(300);		// Goomba walk
-	ani->Add(30001);
-	ani->Add(30002);
-	animations->Add(701, ani);
-
-	ani = new CAnimation(1000);		// Goomba dead
-	ani->Add(30003);
-	animations->Add(702, ani);
-
 	simon = new CSimon();
-	simon->AddAnimation(400);		// idle right big
-	simon->AddAnimation(401);		// idle left big
-	simon->AddAnimation(402);		// idle right small
-	simon->AddAnimation(403);		// idle left small
-
-	simon->AddAnimation(500);		// walk right big
-	simon->AddAnimation(501);		// walk left big
-	simon->AddAnimation(502);		// walk right small
-	simon->AddAnimation(503);		// walk left big
-
-	simon->AddAnimation(599);		// die
-
+	simon->AddAnimation(400);		// idle right	0
+	simon->AddAnimation(401);		// idle left	1
+	simon->AddAnimation(500);		// walk right	2
+	simon->AddAnimation(501);		// walk left	3
+	simon->AddAnimation(599);		// die			4
 	simon->SetPosition(50.0f, 0);
 	objects.push_back(simon);
 

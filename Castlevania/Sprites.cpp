@@ -2,7 +2,7 @@
 #include "Game.h"
 #include "debug.h"
 
-CSprite::CSprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex, int isFlipHorizonttaly)
+CSprite::CSprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex, int isFlipHorizonttaly, D3DXVECTOR2 position)
 {
 	this->id = id;
 	this->left = left;
@@ -11,6 +11,7 @@ CSprite::CSprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEX
 	this->bottom = bottom;
 	this->texture = tex;
 	this->isFlippedHorizontally = isFlipHorizonttaly;
+	this->position = position;
 }
 
 CSprites * CSprites::__instance = NULL;
@@ -24,12 +25,12 @@ CSprites *CSprites::GetInstance()
 void CSprite::Draw(float x, float y, int alpha)
 {
 	CGame * game = CGame::GetInstance();
-	game->Draw(x, y, texture, left, top, right, bottom, alpha, isFlippedHorizontally);
+	game->Draw(x + position.x, y + position.y, texture, left, top, right, bottom, alpha, isFlippedHorizontally);
 }
 
-void CSprites::Add(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex, int isFlippedHorizontally)
+void CSprites::Add(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex, int isFlippedHorizontally, D3DXVECTOR2 position)
 {
-	LPSPRITE s = new CSprite(id, left, top, right, bottom, tex, isFlippedHorizontally);
+	LPSPRITE s = new CSprite(id, left, top, right, bottom, tex, isFlippedHorizontally, position);
 	sprites[id] = s;
 }
 
@@ -37,8 +38,6 @@ LPSPRITE CSprites::Get(int id)
 {
 	return sprites[id];
 }
-
-
 
 void CAnimation::Add(int spriteId, DWORD time)
 {
