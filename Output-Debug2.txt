@@ -1,0 +1,117 @@
+﻿'Castlevania.exe' (Win32): Loaded 'C:\Users\HITONASI\Desktop\2GameDevIntro\Debug\Castlevania.exe'. Symbols loaded.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntdll.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\KernelBase.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\user32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\win32u.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\d3d9.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dinput8.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\D3DX9_43.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcrt.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\gdi32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\advapi32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\gdi32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sechost.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\gdi32.dll'
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rpcrt4.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\gdi32full.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rpcrt4.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\rpcrt4.dll'
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp_win.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sspicli.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cryptbase.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbase.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\bcryptprimitives.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\vcruntime140d.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp140d.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbased.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dwmapi.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\combase.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\imm32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\InputHost.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\SHCore.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\WinTypes.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\CoreMessaging.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\CoreUIComponents.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel.appcore.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntmarta.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\uxtheme.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msctf.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\oleaut32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\TextInputFramework.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\igdumdim32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ole32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\setupapi.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cfgmgr32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\nvblwi.inf_amd64_af748320115c7cba\nvdlist.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\version.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\version.dll'
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\System32\DriverStore\FileRepository\nvblwi.inf_amd64_af748320115c7cba\nvdlist.dll'
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\ole32.dll'
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\cfgmgr32.dll'
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\setupapi.dll'
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\igdumdim32.dll'
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\nvblwi.inf_amd64_af748320115c7cba\nvldumd.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\version.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\crypt32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msasn1.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wintrust.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\imagehlp.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cryptsp.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rsaenh.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\bcrypt.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\nvblwi.inf_amd64_af748320115c7cba\nvd3dum.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmm.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmmbase.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmmbase.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmmbase.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\winmmbase.dll'
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\winmmbase.dll'
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cfgmgr32.dll'. Cannot find or open the PDB file.
+The thread 0x285c has exited with code 0 (0x0).
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\cfgmgr32.dll'
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\winmmbase.dll'
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\winmm.dll'
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\System32\DriverStore\FileRepository\nvblwi.inf_amd64_af748320115c7cba\nvd3dum.dll'
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\version.dll'
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\System32\DriverStore\FileRepository\nvblwi.inf_amd64_af748320115c7cba\nvldumd.dll'
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\nvblwi.inf_amd64_af748320115c7cba\nvldumd.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\version.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\nvblwi.inf_amd64_af748320115c7cba\nvd3dum.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmm.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmmbase.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmmbase.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmmbase.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\winmmbase.dll'
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\winmmbase.dll'
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cfgmgr32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ResourcePolicyClient.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\ResourcePolicyClient.dll'
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\powrprof.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Program Files (x86)\NVIDIA Corporation\3D Vision\nvSCPAPI.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\setupapi.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\shell32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\windows.storage.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\shlwapi.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\profapi.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\fltLib.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ole32.dll'. Cannot find or open the PDB file.
+The thread 0x40ac has exited with code 0 (0x0).
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\gpapi.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cryptnet.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Program Files\NVIDIA Corporation\Ansel\Tools\NvCameraWhitelisting32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Unloaded 'C:\Program Files\NVIDIA Corporation\Ansel\Tools\NvCameraWhitelisting32.dll'
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\igdumdim32.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\igdusc32.dll'. Cannot find or open the PDB file.
+[INFO] InitGame done;
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\hid.dll'. Cannot find or open the PDB file.
+'Castlevania.exe' (Win32): Loaded 'C:\Windows\SysWOW64\devobj.dll'. Cannot find or open the PDB file.
+[INFO] Keyboard has been initialized successfully
+[INFO] Texture loaded Ok: id=-10, textures\mapFile_bank.png 
+Load tile texure OK: textures\mapFile_bank.png(0,0,0,0)(0,0,16,16)(0,16,16,32)(0,32,16,48)(0,48,16,64)(0,64,16,80)(0,80,16,96)(0,96,16,112)(0,112,16,128)(0,128,16,144)(0,144,16,160)(0,160,16,176)(16,0,32,16)(16,16,32,32)(16,32,32,48)(16,48,32,64)(16,64,32,80)(16,80,32,96)(16,96,32,112)(16,112,32,128)(16,128,32,144)(16,144,32,160)(16,160,32,176)(32,0,48,16)(32,16,48,32)(32,32,48,48)(32,48,48,64)(32,64,48,80)(32,80,48,96)(32,96,48,112)(32,112,48,128)(32,128,48,144)(32,144,48,160)(32,160,48,176)(48,0,64,16)(48,16,64,32)(48,32,64,48)(48,48,64,64)(48,64,64,80)(48,80,64,96)(48,96,64,112)(48,112,64,128)(48,128,64,144)(48,144,64,160)(48,160,64,176)(64,0,80,16)(64,16,80,32)(64,32,80,48)(64,48,80,64)(64,64,80,80)(64,80,80,96)(64,96,80,112)(64,112,80,128)(64,128,80,144)(64,144,80,160)(64,160,80,176)(80,0,96,16)(80,16,96,32)(80,32,96,48)(80,48,96,64)(80,64,96,80)(80,80,96,96)(80,96,96,112)(80,112,96,128)(80,128,96,144)(80,144,96,160)(80,160,96,176)(96,0,112,16)(96,16,112,32)(96,32,112,48)(96,48,112,64)(96,64,112,80)(96,80,112,96)(96,96,112,112)(96,112,112,128)(96,128,112,144)(96,144,112,160)(96,160,112,176)(112,0,128,16)(112,16,128,32)(112,32,128,48)(112,48,128,64)(112,64,128,80)(112,80,128,96)(112,96,128,112)(112,112,128,128)(112,128,128,144)(112,144,128,160)(112,160,128,176)(128,0,144,16)(128,16,144,32)(128,32,144,48)(128,48,144,64)(128,64,144,80)(128,80,144,96)(128,96,144,112)(128,112,144,128)(128,128,144,144)(128,144,144,160)(128,160,144,176)(144,0,160,16)(144,16,160,32)(144,32,160,48)(144,48,160,64)(144,64,160,80)(144,80,160,96)(144,96,160,112)(144,112,160,128)(144,128,160,144)(144,144,160,160)(144,160,160,176)(160,0,176,16)(160,16,176,32)(160,32,176,48)(160,48,176,64)(160,64,176,80)(160,80,176,96)(160,96,176,112)(160,112,176,128)(160,128,176,144)(160,144,176,160)(160,160,176,176)(176,0,192,16)(176,16,192,32)(176,32,192,48)(176,48,192,64)(176,64,192,80)(176,80,192,96)(176,96,192,112)(176,112,192,128)(176,128,192,144)(176,144,192,160)(176,160,192,176)(192,0,208,16)(192,16,208,32)(192,32,208,48)(192,48,208,64)(192,64,208,80)(192,80,208,96)(192,96,208,112)(192,112,208,128)(192,128,208,144)(192,144,208,160)(192,160,208,176)(208,0,224,16)(208,16,224,32)(208,32,224,48)(208,48,224,64)(208,64,224,80)(208,80,224,96)(208,96,224,112)(208,112,224,128)(208,128,224,144)(208,144,224,160)(208,160,224,176)(224,0,240,16)(224,16,240,32)(224,32,240,48)(224,48,240,64)(224,64,240,80)(224,80,240,96)(224,96,240,112)(224,112,240,128)(224,128,240,144)(224,144,240,160)[INFO] Texture loaded Ok: id=-10, textures\mapFile_bank.png 
+Load tile texure OK: textures\mapFile_bank.png(0,0,0,0)(0,0,16,16)(0,16,16,32)(0,32,16,48)(0,48,16,64)(0,64,16,80)(0,80,16,96)(0,96,16,112)(0,112,16,128)(0,128,16,144)(0,144,16,160)(0,160,16,176)(16,0,32,16)(16,16,32,32)(16,32,32,48)(16,48,32,64)(16,64,32,80)(16,80,32,96)(16,96,32,112)(16,112,32,128)(16,128,32,144)(16,144,32,160)(16,160,32,176)(32,0,48,16)(32,16,48,32)(32,32,48,48)(32,48,48,64)(32,64,48,80)(32,80,48,96)(32,96,48,112)(32,112,48,128)(32,128,48,144)(32,144,48,160)(32,160,48,176)(48,0,64,16)(48,16,64,32)(48,32,64,48)(48,48,64,64)(48,64,64,80)(48,80,64,96)(48,96,64,112)(48,112,64,128)(48,128,64,144)(48,144,64,160)(48,160,64,176)(64,0,80,16)(64,16,80,32)(64,32,80,48)(64,48,80,64)(64,64,80,80)(64,80,80,96)(64,96,80,112)(64,112,80,128)(64,128,80,144)(64,144,80,160)(64,160,80,176)(80,0,96,16)(80,16,96,32)(80,32,96,48)(80,48,96,64)(80,64,96,80)(80,80,96,96)(80,96,96,112)(80,112,96,128)(80,128,96,144)(80,144,96,160)(80,160,96,176)(96,0,112,16)(96,16,112,32)(96,32,112,48)(96,48,112,64)(96,64,112,80)(96,80,112,96)(96,96,112,112)(96,112,112,128)(96,128,112,144)(96,144,112,160)(96,160,112,176)(112,0,128,16)(112,16,128,32)(112,32,128,48)(112,48,128,64)(112,64,128,80)(112,80,128,96)(112,96,128,112)(112,112,128,128)(112,128,128,144)(112,144,128,160)(112,160,128,176)(128,0,144,16)(128,16,144,32)(128,32,144,48)(128,48,144,64)(128,64,144,80)(128,80,144,96)(128,96,144,112)(128,112,144,128)(128,128,144,144)(128,144,144,160)(128,160,144,176)(144,0,160,16)(144,16,160,32)(144,32,160,48)(144,48,160,64)(144,64,160,80)(144,80,160,96)(144,96,160,112)(144,112,160,128)(144,128,160,144)(144,144,160,160)(144,160,160,176)(160,0,176,16)(160,16,176,32)(160,32,176,48)(160,48,176,64)(160,64,176,80)(160,80,176,96)(160,96,176,112)(160,112,176,128)(160,128,176,144)(160,144,176,160)(160,160,176,176)(176,0,192,16)(176,16,192,32)(176,32,192,48)(176,48,192,64)(176,64,192,80)(176,80,192,96)(176,96,192,112)(176,112,192,128)(176,128,192,144)(176,144,192,160)(176,160,192,176)(192,0,208,16)(192,16,208,32)(192,32,208,48)(192,48,208,64)(192,64,208,80)(192,80,208,96)(192,96,208,112)(192,112,208,128)(192,128,208,144)(192,144,208,160)(192,160,208,176)(208,0,224,16)(208,16,224,32)(208,32,224,48)(208,48,224,64)(208,64,224,80)(208,80,224,96)(208,96,224,112)(208,112,224,128)(208,128,224,144)(208,144,224,160)(208,160,224,176)(224,0,240,16)(224,16,240,32)(224,32,240,48)(224,48,240,64)(224,64,240,80)(224,80,240,96)(224,96,240,112)(224,112,240,128)(224,128,240,144)(224,144,240,160)[INFO] Texture loaded Ok: id=0, textures\simon.png 
+[INFO] Texture loaded Ok: id=20, textures\misc.png 
+[INFO] Texture loaded Ok: id=10, textures\enemies.png 
+[INFO] Texture loaded Ok: id=-100, textures\bbox.png 
+[INFO] KeyDown: 29
+[INFO] KeyUp: 29

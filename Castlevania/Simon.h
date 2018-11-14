@@ -30,7 +30,7 @@
 #define MARIO_SMALL_BBOX_WIDTH  13
 #define MARIO_SMALL_BBOX_HEIGHT 15
 
-#define MARIO_UNTOUCHABLE_TIME 5000
+#define SIMON_UNTOUCHABLE_TIME 5000
 
 class CSimon : public CGameObject
 {

@@ -22,7 +22,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		CalcPotentialCollisions(coObjects, coEvents);
 
 	// reset untouchable timer if untouchable time has passed
-	if (GetTickCount() - untouchable_start > MARIO_UNTOUCHABLE_TIME)
+	if (GetTickCount() - untouchable_start > SIMON_UNTOUCHABLE_TIME)
 	{
 		untouchable_start = 0;
 		untouchable = 0;
@@ -58,17 +58,16 @@ void CSimon::Render()
 	if (state == SIMON_STATE_DIE)
 		ani = SIMON_ANI_DIE;
 	else
-		if (level == MARIO_LEVEL_BIG)
+	{
+		if (vx == 0)
 		{
-			if (vx == 0)
-			{
-				if (nx > 0) ani = SIMON_ANI_IDLE_RIGHT;
-				else ani = SIMON_ANI_IDLE_LEFT;
-			}
-			else if (vx > 0)
-				ani = SIMON_ANI_WALKING_RIGHT;
-			else ani = SIMON_ANI_WALKING_LEFT;
+			if (nx > 0) ani = SIMON_ANI_IDLE_RIGHT;
+			else ani = SIMON_ANI_IDLE_LEFT;
 		}
+		else if (vx > 0)
+			ani = SIMON_ANI_WALKING_RIGHT;
+		else ani = SIMON_ANI_WALKING_LEFT;
+	}
 
 	int alpha = 255;
 	if (untouchable) alpha = 128;

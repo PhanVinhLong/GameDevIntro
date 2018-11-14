@@ -20,6 +20,8 @@
 #include "Simon.h"
 #include "Brick.h"
 
+#include "TileMap.h"
+
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -36,6 +38,9 @@
 CGame *game;
 
 CSimon *simon;
+
+CTileMap *tileMap;
+CTileSet *tileSet;
 
 vector<LPGAMEOBJECT> objects;
 
@@ -107,6 +112,11 @@ void LoadResources()
 {
 	CTextures * textures = CTextures::GetInstance();
 
+	tileMap = new CTileMap();
+	tileSet = new CTileSet();
+	tileSet->LoadFromFile(L"textures\\map01.json");
+	tileMap->LoadFromFile(L"textures\\map01.json");
+	
 	textures->Add(ID_TEX_SIMON, L"textures\\simon.png", D3DCOLOR_XRGB(255, 0, 255));
 	textures->Add(ID_TEX_MISC, L"textures\\misc.png", D3DCOLOR_XRGB(176, 224, 248));
 	textures->Add(ID_TEX_ENEMY, L"textures\\enemies.png", D3DCOLOR_XRGB(3, 26, 110));
@@ -119,12 +129,12 @@ void LoadResources()
 	CAnimations * animations = CAnimations::GetInstance();
 
 	LPDIRECT3DTEXTURE9 texSimon = textures->Get(ID_TEX_SIMON);
-
-	sprites->Add(10001, 105, 8, 121, 39, texSimon, 1, { -10, -10 });		// idle right
-	sprites->Add(10002, 105, 8, 121, 39, texSimon, 1, { -10, -10 });		// walk
-	sprites->Add(10003, 132, 8, 147, 39, texSimon, 1, { -10, -10 });
-	sprites->Add(10004, 160, 8, 176, 39, texSimon, 1, { -10, -10 });
-	sprites->Add(10005, 132, 8, 147, 39, texSimon, 1, { -10, -10 });
+	
+	sprites->Add(10001, 105, 8, 121, 39, texSimon, 1, { 0, 0 });		// idle right
+	sprites->Add(10002, 105, 8, 121, 39, texSimon, 1, { 0, 0 });		// walk
+	sprites->Add(10003, 132, 8, 147, 39, texSimon, 1, { 0, 0 });
+	sprites->Add(10004, 160, 8, 176, 39, texSimon, 1, { 0, 0 });
+	sprites->Add(10005, 132, 8, 147, 39, texSimon, 1, { 0, 0 });
 
 	sprites->Add(10011, 105, 8, 121, 39, texSimon);			// idle left
 	sprites->Add(10012, 105, 8, 121, 39, texSimon);			// walk
@@ -245,8 +255,11 @@ void Render()
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
-		for (int i = 0; i < objects.size(); i++)
-			objects[i]->Render();
+		tileMap->Draw({ 0,0 });
+
+
+		/*for (int i = 0; i < objects.size(); i++)
+			objects[i]->Render();*/
 
 		spriteHandler->End();
 		d3ddv->EndScene();
