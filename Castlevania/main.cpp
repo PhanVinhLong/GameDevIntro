@@ -21,12 +21,13 @@
 #include "Brick.h"
 
 #include "TileMap.h"
+#include "Viewport.h"
 
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(255, 255, 200)
-#define SCREEN_WIDTH	320
+#define SCREEN_WIDTH	256
 #define SCREEN_HEIGHT	240
 
 #define MAX_FRAME_RATE	120
@@ -39,8 +40,8 @@ CGame *game;
 
 CSimon *simon;
 
+CViewport *viewport;
 CTileMap *tileMap;
-CTileSet *tileSet;
 
 vector<LPGAMEOBJECT> objects;
 
@@ -110,11 +111,11 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 */
 void LoadResources()
 {
+	viewport = CViewport::GetInstance();
+
 	CTextures * textures = CTextures::GetInstance();
 
 	tileMap = new CTileMap();
-	tileSet = new CTileSet();
-	tileSet->LoadFromFile(L"textures\\map01.json");
 	tileMap->LoadFromFile(L"textures\\map01.json");
 	
 	textures->Add(ID_TEX_SIMON, L"textures\\simon.png", D3DCOLOR_XRGB(255, 0, 255));
@@ -191,30 +192,12 @@ void LoadResources()
 	simon->SetPosition(50.0f, 0);
 	objects.push_back(simon);
 
-	for (int i = 0; i < 5; i++)
+
+	for (int i = 0; i < 50; i++)
 	{
 		CBrick *brick = new CBrick();
 		brick->AddAnimation(601);
-		brick->SetPosition(100 + i * 48.0f, 74);
-		objects.push_back(brick);
-
-		brick = new CBrick();
-		brick->AddAnimation(601);
-		brick->SetPosition(100 + i * 48.0f, 90);
-		objects.push_back(brick);
-
-		brick = new CBrick();
-		brick->AddAnimation(601);
-		brick->SetPosition(84 + i * 48.0f, 90);
-		objects.push_back(brick);
-	}
-
-
-	for (int i = 0; i < 30; i++)
-	{
-		CBrick *brick = new CBrick();
-		brick->AddAnimation(601);
-		brick->SetPosition(0 + i * 16.0f, 150);
+		brick->SetPosition(0 + i * 16.0f, 144);
 		objects.push_back(brick);
 	}
 }
@@ -228,6 +211,11 @@ void Update(DWORD dt)
 	// We know that Mario is the first object in the list hence we won't add him into the colliable object list
 	// TO-DO: This is a "dirty" way, need a more organized way 
 	vector<LPGAMEOBJECT> coObjects;
+
+	D3DXVECTOR2 playerPos;
+	simon->GetPosition(playerPos.x, playerPos.y);
+	viewport->Update(playerPos);
+
 	for (int i = 1; i < objects.size(); i++)
 	{
 		coObjects.push_back(objects[i]);
@@ -258,8 +246,8 @@ void Render()
 		tileMap->Draw({ 0,0 });
 
 
-		/*for (int i = 0; i < objects.size(); i++)
-			objects[i]->Render();*/
+		for (int i = 0; i < objects.size(); i++)
+			objects[i]->Render();
 
 		spriteHandler->End();
 		d3ddv->EndScene();

@@ -9,6 +9,7 @@
 #include "Sprites.h"
 #include "Textures.h"
 #include "Game.h"
+#include "Viewport.h"
 
 #define ID_TEX_TILESET_01 -10
 

@@ -116,14 +116,16 @@ void CTileMap::LoadFromFile(LPCWSTR filePath)
 
 void CTileMap::Draw(D3DXVECTOR2 position)
 {
+	CViewport * viewport = CViewport::GetInstance();
 	
 	for (int i = 0; i < 11; i++)
 	{
-		for (int j = 0; j < 40; j++)
+		for (int j = 0; j < 60; j++)
 		{
 			D3DXVECTOR2 pos;
-			pos.x = position.x + j * tileSet->GetTileWidth();
-			pos.y = position.y + i * tileSet->GetTileHeight();
+			pos.x = int (position.x + j * tileSet->GetTileWidth());
+			pos.y = int (position.y + i * tileSet->GetTileHeight());
+			pos = CViewport::GetInstance()->WorldToViewportPos(pos);
 			tileSet->DrawTile(mapData[i][j], pos);
 		}
 	}
