@@ -131,27 +131,46 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="Portal.cpp" />
+    <ClCompile Include="Dagger.cpp" />
+    <ClCompile Include="DaggerItem.cpp" />
+    <ClCompile Include="WhipUpgrade.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="LargeHeart.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Simon.cpp" />
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="TileMap.cpp" />
+    <ClCompile Include="Torch.cpp" />
     <ClCompile Include="Viewport.cpp" />
+    <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="Whip.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Brick.h" />
+    <ClInclude Include="HUD.h" />
+    <ClInclude Include="Portal.h" />
+    <ClInclude Include="Dagger.h" />
+    <ClInclude Include="DaggerItem.h" />
+    <ClInclude Include="WhipUpgrade.h" />
     <ClInclude Include="debug.h" />
+    <ClInclude Include="define.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="json.hpp" />
+    <ClInclude Include="LargeHeart.h" />
     <ClInclude Include="Simon.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="TileMap.h" />
+    <ClInclude Include="Torch.h" />
     <ClInclude Include="Viewport.h" />
+    <ClInclude Include="Weapon.h" />
+    <ClInclude Include="Whip.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="C:\Users\HITONASI\Desktop\simon.png" />

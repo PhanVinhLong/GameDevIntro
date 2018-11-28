@@ -34,14 +34,17 @@ D3DXVECTOR2 CViewport::ViewportToWorldPos(D3DXVECTOR2 viewportPos)
 	return { viewportPos.x + position.x, viewportPos.y + position.y };
 }
 
-void CViewport::Update(D3DXVECTOR2 playerPos)
+void CViewport::Update(D3DXVECTOR2 playerPos, int startPos, int endPos)
 {
 	position.x = playerPos.x - width / 2 + 15;
 	// Check if viewport out of world screen
-	if (position.x < 0)
-		position.x = 0;
-	if (position.y < 0)
-		position.y = 0;
+	if (position.x < startPos)
+		position.x = startPos;
+	if (position.x > endPos - width)
+		position.x = endPos - width;
+	position.y = int((playerPos.y - 50) / 176) * 176;
+	if (position.y > 176 * 3 - height)
+		position.y = 176 * 3 - height;
 }
 
 CViewport* CViewport::__instance = NULL;

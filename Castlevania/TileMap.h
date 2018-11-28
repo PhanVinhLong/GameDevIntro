@@ -40,13 +40,16 @@ typedef CTileSet* LPTILESET;
 class CTileMap
 {
 private:
-	int numOfRow;
-	int numOfColumn;
+	int tileRow;
+	int tileColumn;
+	vector<vector<int>> widthEdge;
 	LPTILESET tileSet;
 	int** mapData;
 public:
 	CTileMap();
 	void LoadFromFile(LPCWSTR filePath);
 	void Draw(D3DXVECTOR2 position);
+	int GetWidthStart(int playerPos);
+	int GetWidthEnd(int playerPos);
 	~CTileMap();
 };

@@ -1,5 +1,10 @@
 #include "Brick.h"
 
+CBrick::CBrick()
+{
+	id = ID_WALL;
+}
+
 void CBrick::Render()
 {
 	//animations[0]->Render(x, y);

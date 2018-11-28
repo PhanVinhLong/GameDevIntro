@@ -7,6 +7,7 @@
 #include "Game.h"
 #include "GameObject.h"
 #include "Sprites.h"
+#include "Viewport.h"
 
 CGameObject::CGameObject()
 {
@@ -83,7 +84,8 @@ void CGameObject::FilterCollision(
 	vector<LPCOLLISIONEVENT> &coEvents,
 	vector<LPCOLLISIONEVENT> &coEventsResult,
 	float &min_tx, float &min_ty,
-	float &nx, float &ny)
+	float &nx, float &ny,
+	int &idx, int &idy)
 {
 	min_tx = 1.0f;
 	min_ty = 1.0f;
@@ -100,11 +102,11 @@ void CGameObject::FilterCollision(
 		LPCOLLISIONEVENT c = coEvents[i];
 
 		if (c->t < min_tx && c->nx != 0) {
-			min_tx = c->t; nx = c->nx; min_ix = i;
+			min_tx = c->t; nx = c->nx; min_ix = i; idx = c->obj->GetID();
 		}
 
 		if (c->t < min_ty  && c->ny != 0) {
-			min_ty = c->t; ny = c->ny; min_iy = i;
+			min_ty = c->t; ny = c->ny; min_iy = i; idy = c->obj->GetID();
 		}
 	}
 
@@ -113,7 +115,7 @@ void CGameObject::FilterCollision(
 }
 
 
-void CGameObject::RenderBoundingBox()
+void CGameObject::RenderBoundingBox(int alpha)
 {
 	D3DXVECTOR3 p(x, y, 0);
 	RECT rect;
@@ -128,7 +130,8 @@ void CGameObject::RenderBoundingBox()
 	rect.right = (int)r - (int)l;
 	rect.bottom = (int)b - (int)t;
 
-	CGame::GetInstance()->Draw(x, y, bbox, rect.left, rect.top, rect.right, rect.bottom, 0);
+	D3DXVECTOR2 viewportPos = CViewport::GetInstance()->WorldToViewportPos({ l, t });
+	CGame::GetInstance()->Draw(viewportPos.x, viewportPos.y, bbox, rect.left, rect.top, rect.right, rect.bottom, alpha);
 }
 
 void CGameObject::AddAnimation(int aniId)
@@ -137,6 +140,17 @@ void CGameObject::AddAnimation(int aniId)
 	animations.push_back(ani);
 }
 
+
+void CGameObject::ResetAnimation()
+{
+	for (auto iter : animations)
+		iter->Reset();
+}
+
+int CGameObject::GetNextItemID()
+{
+	return this->nextItemID;
+}
 
 CGameObject::~CGameObject()
 {

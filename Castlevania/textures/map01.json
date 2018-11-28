@@ -11,7 +11,8 @@
          "visible":true,
          "width":176,
          "x":0,
-         "y":0
+         "y":0,
+         "edge":[[0, 48], [0, 176], [96, 128]]
         }],
  "nextlayerid":2,
  "nextobjectid":1,

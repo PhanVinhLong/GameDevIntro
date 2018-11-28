@@ -4,6 +4,7 @@
 #include <d3dx9.h>
 #include <vector>
 
+#include "define.h"
 #include "Sprites.h"
 
 
@@ -28,8 +29,6 @@ struct CCollisionEvent
 	}
 };
 
-
-
 class CGameObject
 {
 protected:
@@ -51,25 +50,32 @@ protected:
 
 	vector<LPANIMATION> animations;
 
+	int id;
+	int nextItemID;
+
 public:
-	void SetPosition(float x, float y) { this->x = x, this->y = y; }
-	void SetSpeed(float vx, float vy) { this->vx = vx, this->vy = vy; }
+	void SetPosition(float x, float y) { this->x = x; this->y = y; }
+	void AddPosition(float x, float y) { this->x = this->x + x; this->y = this->y + y; }
+	void SetSpeed(float vx, float vy) { this->vx = vx; this->vy = vy; }
 	void GetPosition(float &x, float &y) { x = this->x; y = this->y; }
 	void GetSpeed(float &vx, float &vy) { vx = this->vx; vy = this->vy; }
+	int GetID() { return id; }
 
 	int GetState() { return this->state; }
 
-	void RenderBoundingBox();
+	void RenderBoundingBox(int alpha = 255);
 
 	LPCOLLISIONEVENT SweptAABBEx(LPGAMEOBJECT coO);
-	void CalcPotentialCollisions(vector<LPGAMEOBJECT> *coObjects, vector<LPCOLLISIONEVENT> &coEvents);
+	virtual void CalcPotentialCollisions(vector<LPGAMEOBJECT> *coObjects, vector<LPCOLLISIONEVENT> &coEvents);
 	void FilterCollision(
 		vector<LPCOLLISIONEVENT> &coEvents,
 		vector<LPCOLLISIONEVENT> &coEventsResult,
 		float &min_tx,
 		float &min_ty,
 		float &nx,
-		float &ny);
+		float &ny,
+		int &idx,
+		int &idy);
 
 	void AddAnimation(int aniId);
 
@@ -79,7 +85,10 @@ public:
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render() = 0;
 	virtual void SetState(int state) { this->state = state; }
-
+	virtual void ResetAnimation();
+	int GetNextItemID();
 
 	~CGameObject();
 };
+
+typedef CGameObject* LPGAMEOBJECT;
