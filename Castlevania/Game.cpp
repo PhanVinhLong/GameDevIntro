@@ -57,7 +57,7 @@ void CGame::Init(HWND hWnd)
 */
 void CGame::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, float left, float top, float right, float bottom, int alpha, int isFlippedHorizontally)
 {
-	D3DXVECTOR3 p(int(x), int(y), 0);
+	D3DXVECTOR3 p((int)x, (int)y, 0);
 	RECT r;
 	r.left = left;
 	r.top = top;
@@ -288,7 +288,6 @@ void CGame::SweptAABB(
 		ty_entry = dy_entry / dy;
 		ty_exit = dy_exit / dy;
 	}
-
 
 	if ((tx_entry < 0.0f && ty_entry < 0.0f) || tx_entry > 1.0f || ty_entry > 1.0f) return;
 

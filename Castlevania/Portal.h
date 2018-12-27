@@ -1,8 +1,8 @@
 #pragma once
 #include "GameObject.h"
 
-#define PORTAL_BBOX_WIDTH	30
-#define PORTAL_BBOX_HEIGHT	30
+#define PORTAL_BBOX_WIDTH	12
+#define PORTAL_BBOX_HEIGHT	12
 
 class CPortal :
 	public CGameObject
@@ -15,6 +15,5 @@ public:
 
 	virtual void GetBoundingBox(float &l, float &t, float &r, float &b);
 	virtual void Render();
+	D3DXVECTOR2 GetDestination();
 };
-
-typedef CPortal* LPPORTAL;

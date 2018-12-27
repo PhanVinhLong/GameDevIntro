@@ -10,8 +10,6 @@
 
 using namespace std;
 
-#define ID_TEX_BBOX -100		// special texture to draw object bounding box
-
 class CGameObject;
 typedef CGameObject * LPGAMEOBJECT;
 
@@ -43,6 +41,7 @@ protected:
 	float vy;
 
 	int nx;
+	int ny;
 
 	int state;
 
@@ -51,7 +50,9 @@ protected:
 	vector<LPANIMATION> animations;
 
 	int id;
-	int nextItemID;
+	int score;
+	int nextItemId;
+	bool isOnGround;
 
 public:
 	void SetPosition(float x, float y) { this->x = x; this->y = y; }
@@ -59,7 +60,7 @@ public:
 	void SetSpeed(float vx, float vy) { this->vx = vx; this->vy = vy; }
 	void GetPosition(float &x, float &y) { x = this->x; y = this->y; }
 	void GetSpeed(float &vx, float &vy) { vx = this->vx; vy = this->vy; }
-	int GetID() { return id; }
+	int GetId() { return id; }
 
 	int GetState() { return this->state; }
 
@@ -73,9 +74,7 @@ public:
 		float &min_tx,
 		float &min_ty,
 		float &nx,
-		float &ny,
-		int &idx,
-		int &idy);
+		float &ny);
 
 	void AddAnimation(int aniId);
 
@@ -86,7 +85,13 @@ public:
 	virtual void Render() = 0;
 	virtual void SetState(int state) { this->state = state; }
 	virtual void ResetAnimation();
-	int GetNextItemID();
+	virtual int GetScore() { return score; }
+	virtual void Start() {}
+	virtual void BeDamaged();
+
+	int GetNx();
+	int GetNy();
+	int GetNextItemId();
 
 	~CGameObject();
 };

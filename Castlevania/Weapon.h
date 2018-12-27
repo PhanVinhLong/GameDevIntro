@@ -4,6 +4,7 @@
 #include "LargeHeart.h"
 #include "WhipUpgrade.h"
 #include "DaggerItem.h"
+#include "SmallHeart.h"
 
 #define ID_SUBWEAPON_NONE	-1
 
@@ -18,3 +19,4 @@ public:
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects);
 };
 
+typedef CWeapon* LPWEAPON;

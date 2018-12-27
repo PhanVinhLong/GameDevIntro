@@ -23,13 +23,15 @@ CWhip::CWhip()
 {
 	level = 0;
 	id = ID_WHIP;
+	vx = 0;
+	vy = 0;
 
-	AddAnimation(111);
-	AddAnimation(112);
-	AddAnimation(113);
-	AddAnimation(114);
-	AddAnimation(115);
-	AddAnimation(116);
+	AddAnimation(ID_ANI_WHIP_0_RIGHT);
+	AddAnimation(ID_ANI_WHIP_0_LEFT);
+	AddAnimation(ID_ANI_WHIP_1_RIGHT);
+	AddAnimation(ID_ANI_WHIP_1_LEFT);
+	AddAnimation(ID_ANI_WHIP_2_RIGHT);
+	AddAnimation(ID_ANI_WHIP_2_LEFT);
 }
 
 CWhip::~CWhip()
@@ -77,45 +79,11 @@ void CWhip::Render(int frame)
 
 void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects, D3DXVECTOR2 playerPos, int playerNx)
 {
-	CGameObject::Update(dt, coObjects);
+	CWeapon::Update(dt, coObjects);
+
 	this->x = playerPos.x;
 	this->y = playerPos.y;
 	this->nx = playerNx;
-	
-	for (int i = 0; i < coObjects->size(); i++)
-	{
-		if (coObjects->at(i)->GetID() == ID_TORCH)
-		{
-			float al, at, ar, ab, bl, bt, br, bb;
-			GetBoundingBox(al, at, ar, ab);
-			coObjects->at(i)->GetBoundingBox(bl, bt, br, bb);
-			if (CGame::GetInstance()->IsIntersect({ long(al),long(at),long(ar),long(ab) }, { long(bl), long(bt), long(br), long(bb) }))
-			{
-				float a, b;
-				coObjects->at(i)->GetPosition(a, b);
-				CGameObject* nextItem;
-				switch (coObjects->at(i)->GetNextItemID())
-				{
-				case ID_LARGE_HEART:
-					nextItem = new CLargeHeart({ a, b });
-					break;
-				case ID_WHIP_UPGRADE:
-					nextItem = new CWhipUpgrade({ a, b });
-					break;
-				case ID_DAGGER_ITEM:
-					nextItem = new CDaggerItem({ a, b });
-					break;
-				default:
-					nextItem = NULL;
-					break;
-				}
-				if (nextItem)
-					coObjects->push_back(nextItem);
-
-				coObjects->at(i)->SetState(STATE_DESTROYED);
-			}
-		}
-	}
 }
 
 void CWhip::Upgrade()

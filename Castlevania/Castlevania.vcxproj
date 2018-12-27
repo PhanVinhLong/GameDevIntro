@@ -130,11 +130,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="Axe.cpp" />
+    <ClCompile Include="AxeItem.cpp" />
+    <ClCompile Include="Bat.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Candle.cpp" />
+    <ClCompile Include="PhantomBat.cpp" />
+    <ClCompile Include="CrossItem.cpp" />
+    <ClCompile Include="Door.cpp" />
+    <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="EnemySpawner.cpp" />
+    <ClCompile Include="Fishman.cpp" />
+    <ClCompile Include="Ghoul.cpp" />
+    <ClCompile Include="HolyWaterPotion.cpp" />
+    <ClCompile Include="MapSet.cpp" />
+    <ClCompile Include="Panther.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Stair.cpp" />
+    <ClCompile Include="GroundObject.cpp" />
+    <ClCompile Include="HolyWater.cpp" />
     <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Portal.cpp" />
     <ClCompile Include="Dagger.cpp" />
     <ClCompile Include="DaggerItem.cpp" />
+    <ClCompile Include="SmallHeart.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="Water.cpp" />
+    <ClCompile Include="WaterEffect.cpp" />
     <ClCompile Include="WhipUpgrade.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -151,11 +175,35 @@
     <ClCompile Include="Whip.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Brick.h" />
+    <ClInclude Include="Axe.h" />
+    <ClInclude Include="AxeItem.h" />
+    <ClInclude Include="Bat.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Candle.h" />
+    <ClInclude Include="PhantomBat.h" />
+    <ClInclude Include="CrossItem.h" />
+    <ClInclude Include="Door.h" />
+    <ClInclude Include="Effect.h" />
+    <ClInclude Include="EnemySpawner.h" />
+    <ClInclude Include="Fishman.h" />
+    <ClInclude Include="Ghoul.h" />
+    <ClInclude Include="HolyWaterPotion.h" />
+    <ClInclude Include="MapSet.h" />
+    <ClInclude Include="Panther.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Stair.h" />
+    <ClInclude Include="GroundObject.h" />
+    <ClInclude Include="HolyWater.h" />
     <ClInclude Include="HUD.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Portal.h" />
     <ClInclude Include="Dagger.h" />
     <ClInclude Include="DaggerItem.h" />
+    <ClInclude Include="SmallHeart.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="Wall.h" />
+    <ClInclude Include="Water.h" />
+    <ClInclude Include="WaterEffect.h" />
     <ClInclude Include="WhipUpgrade.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="define.h" />
@@ -171,10 +219,6 @@
     <ClInclude Include="Viewport.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="Whip.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="C:\Users\HITONASI\Desktop\simon.png" />
-    <Image Include="textures\mapFile_bank.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

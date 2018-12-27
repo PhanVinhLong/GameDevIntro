@@ -1,19 +1,12 @@
 #include "Torch.h"
 
-CTorch::CTorch()
-{
-	x = y = 0;
-	AddAnimation(200);
-	id = ID_TORCH;
-}
-
-CTorch::CTorch(D3DXVECTOR2 position, int nextItemID)
+CTorch::CTorch(D3DXVECTOR2 position, int nextItemId)
 {
 	x = position.x;
 	y = position.y;
 	AddAnimation(200);
 	id = ID_TORCH;
-	this->nextItemID = nextItemID;
+	this->nextItemId = nextItemId;
 }
 
 CTorch::~CTorch()
@@ -22,13 +15,14 @@ CTorch::~CTorch()
 
 void CTorch::GetBoundingBox(float & l, float & t, float & r, float & b)
 {
-	l = x;
-	t = y - TORCH_BBOX_HEIGHT;
-	r = x + TORCH_BBOX_WIDTH;
-	b = y;
+	if (state == GROUND_OBJ_STATE_NORMAL)
+	{
+		l = x;
+		t = y - TORCH_BBOX_HEIGHT;
+		r = x + TORCH_BBOX_WIDTH;
+		b = y;
+	}
+	else
+		l = t = r = b = 0;
 }
 
-void CTorch::Render()
-{
-	animations[0]->Render(x, y);
-}

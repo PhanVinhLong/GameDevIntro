@@ -9,9 +9,11 @@
 #include "Sprites.h"
 #include "Textures.h"
 #include "Game.h"
+#include "GameObject.h"
 #include "Viewport.h"
+#include "define.h"
 
-#define ID_TEX_TILESET_01 -10
+#define TILEMAP_CROSS_EFFECT_TIME		1000
 
 // https://github.com/nlohmann/json
 using json = nlohmann::json;
@@ -29,7 +31,7 @@ private:
 public:
 	CTileSet();
 	void LoadFromFile(LPCWSTR filePath);
-	void DrawTile(int id, D3DXVECTOR2 position);
+	void DrawTile(int id, D3DXVECTOR2 position, int alpha = 255);
 	int GetTileWidth();
 	int GetTileHeight();
 	~CTileSet();
@@ -42,14 +44,23 @@ class CTileMap
 private:
 	int tileRow;
 	int tileColumn;
-	vector<vector<int>> widthEdge;
+	int height;
 	LPTILESET tileSet;
 	int** mapData;
+
+	int wStart;
+	int wEnd;
+
+	static DWORD effectStart;
 public:
 	CTileMap();
-	void LoadFromFile(LPCWSTR filePath);
-	void Draw(D3DXVECTOR2 position);
-	int GetWidthStart(int playerPos);
-	int GetWidthEnd(int playerPos);
 	~CTileMap();
+
+	void LoadFromFile(LPCWSTR filePath);
+	void Draw(D3DXVECTOR2 position, int alpha = 255);
+	void Update(DWORD dt, vector<LPGAMEOBJECT>* object = NULL);
+
+	static void StartEffect() { effectStart = GetTickCount(); }
 };
+
+typedef CTileMap* LPTILEMAP;

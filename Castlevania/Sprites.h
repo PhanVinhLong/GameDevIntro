@@ -3,6 +3,7 @@
 #include <d3dx9.h>
 #include <unordered_map>
 #include "Viewport.h"
+#include "Textures.h"
 
 using namespace std;
 
@@ -19,7 +20,7 @@ class CSprite
 	D3DXVECTOR2 position;
 	LPDIRECT3DTEXTURE9 texture;
 public:
-	CSprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex, int isFlipHorizontally = 0, D3DXVECTOR2 position = { 0, 0 });
+	CSprite(int id, int left, int top, int right, int bottom, int texId, int isFlipHorizontally = 0, D3DXVECTOR2 position = { 0, 0 });
 
 	void Draw(float x, float y, int alpha = 255);
 	D3DXVECTOR2 GetPosition() { return this->position; }
@@ -37,7 +38,7 @@ class CSprites
 	unordered_map<int, LPSPRITE> sprites;
 
 public:
-	void Add(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex, int isFlippedHorizontally = 0, D3DXVECTOR2 position = { 0, 0 });
+	void Add(int id, int left, int top, int right, int bottom, int texId, int isFlippedHorizontally = 0, D3DXVECTOR2 position = { 0, 0 });
 	LPSPRITE Get(int id);
 
 	static CSprites * GetInstance();

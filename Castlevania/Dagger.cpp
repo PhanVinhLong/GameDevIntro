@@ -5,10 +5,10 @@ CDagger::CDagger(D3DXVECTOR2 position, int nx)
 	x = position.x;
 	y = position.y - 15;
 	this->nx = nx;
-	id = ID_DAGGER;
-	vx = DAGGER_SPEED;
-	AddAnimation(302);
-	AddAnimation(303);
+	id = ID_SUBWEAPON_DAGGER;
+	vx = nx * DAGGER_SPEED_X;
+	AddAnimation(ID_ANI_DAGGER_RIGHT);
+	AddAnimation(ID_ANI_DAGGER_LEFT);
 }
 
 CDagger::~CDagger()
@@ -32,9 +32,5 @@ void CDagger::Render()
 
 void CDagger::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	if (nx > 0)
-		x += DAGGER_SPEED * dt;
-	else
-		x -= DAGGER_SPEED * dt;
 	CWeapon::Update(dt, coObjects);
 }

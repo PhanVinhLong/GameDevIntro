@@ -1,10 +1,11 @@
 #pragma once
-#include "GameObject.h"
+#include "Weapon.h"
 #include "Textures.h"
 #include "Game.h"
 #include "LargeHeart.h"
 #include "WhipUpgrade.h"
 #include "DaggerItem.h"
+#include "SmallHeart.h"
 
 #define ID_TEX_WHIP			30
 
@@ -25,7 +26,7 @@
 class CSimon;
 
 class CWhip :
-	public CGameObject
+	public CWeapon
 {
 private:
 	int level;
@@ -39,5 +40,3 @@ public:
 	void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects, D3DXVECTOR2 playerPos, int playerNx);
 	void Upgrade();
 };
-
-typedef CWhip* LPWHIP;

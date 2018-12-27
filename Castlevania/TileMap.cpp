@@ -18,13 +18,13 @@ void CTileSet::LoadFromFile(LPCWSTR filePath)
 	numOfColumn = j["tilesets"][0]["columns"].get<int>();
 	int tileCount = j["tilesets"][0]["tilecount"].get<int>();
 	string tmpPath = "textures\\" + j["/tilesets/0/image"_json_pointer].get<string>();
-
+	
 	numOfRow = (tileCount - 1) / numOfColumn + 1;
 		
 	wstring sTmp;
 	sTmp = s2ws(tmpPath);
 	LPCWSTR imagePath = sTmp.c_str();
-
+	
 	/*int tileWidth = 16;
 	int tileHeight = 16;
 	int numOfColumn = 11;
@@ -42,18 +42,16 @@ void CTileSet::LoadFromFile(LPCWSTR filePath)
 		}
 
 	// Add texture
-	CTextures::GetInstance()->Add(ID_TEX_TILESET_01, imagePath, 0);
+	CTextures::GetInstance()->Add(ID_TEX_TILESET_01, imagePath, D3DCOLOR_RGBA(5,5,5,255));
 	this->texture = CTextures::GetInstance()->Get(ID_TEX_TILESET_01);
-	if (texture)
-		DebugOut(L"Load tile texure OK: %s", imagePath);
 
 	file.close();
 }
 
-void CTileSet::DrawTile(int id, D3DXVECTOR2 position)
+void CTileSet::DrawTile(int id, D3DXVECTOR2 position, int alpha)
 {
 	RECT sourceRect = listTile[id];
-	CGame::GetInstance()->Draw(position.x, position.y, texture, sourceRect.left, sourceRect.top, sourceRect.right, sourceRect.bottom);
+	CGame::GetInstance()->Draw(position.x, position.y, texture, sourceRect.left, sourceRect.top, sourceRect.right, sourceRect.bottom, alpha);
 }
 
 int CTileSet::GetTileWidth()
@@ -80,10 +78,21 @@ std::wstring s2ws(const std::string& s)
     return r;
 }
 
+DWORD CTileMap::effectStart;
+
 CTileMap::CTileMap()
 {
 	
 	tileSet = new CTileSet();
+	wStart = 0;
+	wEnd = 48*16;
+
+	effectStart = 0;
+}
+
+CTileMap::~CTileMap()
+{
+
 }
 
 void CTileMap::LoadFromFile(LPCWSTR filePath)
@@ -94,7 +103,7 @@ void CTileMap::LoadFromFile(LPCWSTR filePath)
 
 	tileRow = j["/layers/0/height"_json_pointer].get<int>();
 	tileColumn = j["/layers/0/width"_json_pointer].get<int>();
-	widthEdge = j["/layers/0/edge"_json_pointer].get<vector<vector<int>>>();
+	height = j["/height"_json_pointer].get<int>();
 
 	vector<int> data = j["/layers/0/data"_json_pointer].get<vector<int>>();
 
@@ -114,14 +123,25 @@ void CTileMap::LoadFromFile(LPCWSTR filePath)
 	tileSet->LoadFromFile(filePath);
 }
 
-void CTileMap::Draw(D3DXVECTOR2 position)
+void CTileMap::Draw(D3DXVECTOR2 position, int alpha)
 {
 	CViewport * viewport = CViewport::GetInstance();
 
 	int wStart = viewport->GetPosition().x / tileSet->GetTileWidth();
+	if (wStart < 0) wStart = 0;
 	int hStart = viewport->GetPosition().y / tileSet->GetTileHeight();
+	if (hStart < 0) hStart = 0;
 	int wEnd = wStart + viewport->GetWidth() / tileSet->GetTileWidth();
+	if (wEnd > tileColumn) wEnd = tileColumn;
 	int hEnd = hStart + viewport->GetHeight() / tileSet->GetTileHeight();
+	if (hEnd > tileRow) hEnd = tileRow;
+
+	if (effectStart > 0)
+	{
+		alpha = GetTickCount() % 100 > 50 ? 80 : 255;
+		if(alpha==80)
+		CGame::GetInstance()->GetDirect3DDevice()->ColorFill(CGame::GetInstance()->GetBackBuffer(), NULL, D3DXCOLOR(0xFFFFFF));
+	}
 
 	for (int i = hStart; i < hEnd; i++)
 	{
@@ -131,17 +151,14 @@ void CTileMap::Draw(D3DXVECTOR2 position)
 			pos.x = position.x + j * tileSet->GetTileWidth();
 			pos.y = position.y + i * tileSet->GetTileHeight() + HUD_HEIGHT;
 			pos = CViewport::GetInstance()->WorldToViewportPos(pos);
-			tileSet->DrawTile(mapData[i][j], pos);
+			tileSet->DrawTile(mapData[i][j], pos, 255);
 		}
 	}
 }
 
-int CTileMap::GetWidthStart(int playerPosY)
+void CTileMap::Update(DWORD dt, vector<LPGAMEOBJECT>* object)
 {
-	return widthEdge[(playerPosY-HUD_HEIGHT) / 176][0] * tileSet->GetTileWidth();
+	if (effectStart > 0 && GetTickCount() - effectStart > TILEMAP_CROSS_EFFECT_TIME)
+		effectStart = 0;
 }
 
-int CTileMap::GetWidthEnd(int playerPosX)
-{
-	return widthEdge[(playerPosX - 40) / 176][1] * tileSet->GetTileWidth();
-}
