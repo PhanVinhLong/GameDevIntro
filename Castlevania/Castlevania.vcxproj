@@ -133,8 +133,11 @@
     <ClCompile Include="Axe.cpp" />
     <ClCompile Include="AxeItem.cpp" />
     <ClCompile Include="Bat.cpp" />
+    <ClCompile Include="Boomerang.cpp" />
+    <ClCompile Include="BoomerangItem.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Candle.cpp" />
+    <ClCompile Include="InvincibilityPotion.cpp" />
     <ClCompile Include="PhantomBat.cpp" />
     <ClCompile Include="CrossItem.cpp" />
     <ClCompile Include="Door.cpp" />
@@ -155,6 +158,7 @@
     <ClCompile Include="Dagger.cpp" />
     <ClCompile Include="DaggerItem.cpp" />
     <ClCompile Include="SmallHeart.cpp" />
+    <ClCompile Include="StopwatchItem.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="Water.cpp" />
@@ -178,8 +182,11 @@
     <ClInclude Include="Axe.h" />
     <ClInclude Include="AxeItem.h" />
     <ClInclude Include="Bat.h" />
+    <ClInclude Include="Boomerang.h" />
+    <ClInclude Include="BoomerangItem.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Candle.h" />
+    <ClInclude Include="InvincibilityPotion.h" />
     <ClInclude Include="PhantomBat.h" />
     <ClInclude Include="CrossItem.h" />
     <ClInclude Include="Door.h" />
@@ -200,6 +207,7 @@
     <ClInclude Include="Dagger.h" />
     <ClInclude Include="DaggerItem.h" />
     <ClInclude Include="SmallHeart.h" />
+    <ClInclude Include="StopwatchItem.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="Water.h" />

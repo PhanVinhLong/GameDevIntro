@@ -33,7 +33,7 @@ CSimon::CSimon()
 	AddAnimation(ID_ANI_SIMON_FLASH_LEFT);
 
 	id = ID_SIMON;
-	subWeaponID = ID_SUBWEAPON_AXE;
+	subWeaponID = ID_SUBWEAPON_BOOMERANG;
 	subweaponLevel = 1;
 
 	whip = new CWhip();
@@ -381,9 +381,13 @@ void CSimon::ColideWithObject(LPGAMEOBJECT obj, vector<LPGAMEOBJECT>* objects)
 		SetSubWeapon(ID_SUBWEAPON_BOOMERANG);
 		obj->SetState(STATE_DESTROYED);
 		break;
-	case ID_ITEM_INVISIBILITY_POTION:
-		StartInvisibility();
+	case ID_ITEM_STOPWATCH:
+		SetSubWeapon(ID_SUBWEAPON_STOPWATCH);
+		obj->SetState(STATE_DESTROYED);
 		break;
+	case ID_ITEM_INVINCIBILITY_POTION:
+		StartInvisibility();
+		obj->SetState(STATE_DESTROYED);
 		break;
 	case ID_ITEM_SMALL_HEART:
 		IncreaseHeart(1);
@@ -573,6 +577,9 @@ void CSimon::StartAttackSub()
 		break;
 	case ID_SUBWEAPON_HOLY_WATER:
 		subWeapon.push_back(new CHolyWater({ x, y }, nx));
+		break;
+	case ID_SUBWEAPON_BOOMERANG:
+		subWeapon.push_back(new CBoomerang({ x, y }, nx));
 		break;
 	default:
 		break;

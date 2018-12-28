@@ -73,7 +73,7 @@ void CHUD::Draw(D3DXVECTOR2 position)
 	}
 
 	// item
-	GetItemSprite()->Draw(164, 29);
+	GetItemSprite()->Draw(165, 31);
 
 	// player's life
 	text->DrawString(IntToChar(player->GetLife(), 2), { 205, 25 });
@@ -102,10 +102,10 @@ LPSPRITE CHUD::GetItemSprite()
 		spriteId = 12020;
 		break;
 	case ID_SUBWEAPON_BOOMERANG:
-		spriteId = 0;
+		spriteId = 12039;
 		break;
 	case ID_SUBWEAPON_STOPWATCH:
-		spriteId = 0;
+		spriteId = 12007;
 		break;
 	default:
 		spriteId = 0;

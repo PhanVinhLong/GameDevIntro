@@ -144,6 +144,18 @@
     <ClCompile Include="PhantomBat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StopwatchItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Boomerang.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomerangItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InvincibilityPotion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -276,6 +288,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PhantomBat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StopwatchItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Boomerang.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomerangItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InvincibilityPotion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

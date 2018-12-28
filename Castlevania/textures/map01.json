@@ -43,7 +43,7 @@
                         {
                          "name":"reward",
                          "type":"int",
-                         "value":22
+                         "value":28
                         }],
                  "rotation":0,
                  "type":"torch",

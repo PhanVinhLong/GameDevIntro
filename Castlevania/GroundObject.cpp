@@ -37,11 +37,20 @@ void CGroundObject::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 		case ID_ITEM_AXE:
 			nextItem = new CAxeItem({ x, y });
 			break;
+		case ID_ITEM_STOPWATCH:
+			nextItem = new CStopwatchItem({ x, y });
+			break;
+		case ID_ITEM_BOOMERANG:
+			nextItem = new CBoomerangItem({ x, y });
+			break;
 		case ID_ITEM_HOLY_WATER:
 			nextItem = new CHolyWaterPotion({ x , y });
 			break;
 		case ID_ITEM_CROSS:
 			nextItem = new CCrossItem({ x, y });
+			break;
+		case ID_ITEM_INVINCIBILITY_POTION:
+			nextItem = new CInvincibilityPotion({ x, y });
 			break;
 		default:
 			nextItem = NULL;

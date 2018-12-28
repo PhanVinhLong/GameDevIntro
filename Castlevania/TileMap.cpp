@@ -140,7 +140,7 @@ void CTileMap::Draw(D3DXVECTOR2 position, int alpha)
 	{
 		alpha = GetTickCount() % 100 > 50 ? 80 : 255;
 		if(alpha==80)
-		CGame::GetInstance()->GetDirect3DDevice()->ColorFill(CGame::GetInstance()->GetBackBuffer(), NULL, D3DXCOLOR(0xFFFFFF));
+		CGame::GetInstance()->GetDirect3DDevice()->ColorFill(CGame::GetInstance()->GetBackBuffer(), NULL, D3DXCOLOR(0xBBBBBB));
 	}
 
 	for (int i = hStart; i < hEnd; i++)

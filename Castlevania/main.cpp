@@ -215,7 +215,7 @@ void LoadResources()
 	textures->Add(ID_TEX_ENEMY, L"textures\\enemy.png", D3DCOLOR_XRGB(96, 68, 106));
 	textures->Add(ID_TEX_OBJECT, L"textures\\objects.png", D3DCOLOR_XRGB(255, 0, 255));
 	textures->Add(ID_TEX_ITEM, L"textures\\items.png", D3DCOLOR_XRGB(255, 0, 255));
-	textures->Add(ID_TEX_HUD_BG, L"textures\\HUD.png", 0);
+	textures->Add(ID_TEX_HUD_BG, L"textures\\HUD.png", D3DCOLOR_XRGB(0, 0, 0));
 	textures->Add(ID_TEX_HEALTH, L"textures\\health.png", 0);
 	textures->Add(ID_TEX_BOSS, L"textures\\boss.png", D3DCOLOR_XRGB(168, 40, 88));
 

@@ -5,8 +5,11 @@
 #include "DaggerItem.h"
 #include "WhipUpgrade.h"
 #include "AxeItem.h"
+#include "StopwatchItem.h"
 #include "HolyWaterPotion.h"
 #include "CrossItem.h"
+#include "BoomerangItem.h"
+#include "InvincibilityPotion.h"
 #include "define.h"
 
 #define GROUND_OBJ_ON_FIRE_TIME		450

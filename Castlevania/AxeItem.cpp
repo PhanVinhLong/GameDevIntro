@@ -1,7 +1,5 @@
 #include "AxeItem.h"
 
-
-
 CAxeItem::CAxeItem(D3DXVECTOR2 position)
 {
 	x = position.x;
@@ -9,7 +7,6 @@ CAxeItem::CAxeItem(D3DXVECTOR2 position)
 	id = ID_ITEM_AXE;
 	AddAnimation(ID_ANI_AXE_ITEM);
 }
-
 
 CAxeItem::~CAxeItem()
 {
