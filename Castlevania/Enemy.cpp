@@ -14,6 +14,7 @@ CEnemy::~CEnemy()
 void CEnemy::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 {
 	CGameObject::Update(dt);
+	DebugOut(L"%d\n", (int)stopWatchStart);
 
 	vector<LPGAMEOBJECT> wallObjects;
 
@@ -33,8 +34,11 @@ void CEnemy::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 	// No collision occured, proceed normally
 	if (coEvents.size() == 0)
 	{
-		x += dx;
-		y += dy;
+		if (stopWatchStart == 0)
+		{
+			x += dx;
+			y += dy;
+		}
 	}
 	else
 	{
@@ -51,8 +55,8 @@ void CEnemy::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 			vy = 0;
 			if (!isOnGround) isOnGround = true;
 		}
-		else y += dy;
-		x += dx;
+		else if(stopWatchStart == 0) y += dy;
+		if (stopWatchStart == 0)x += dx;
 	}
 
 	// clean up collision events

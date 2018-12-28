@@ -28,7 +28,7 @@ void CBat::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 
 	if (state != ENEMY_STATE_ON_FIRE)
 	{
-		delta += 3.7f;
+		if(stopWatchStart == 0) delta += 3.7f;
 		y = sin(delta * 3.14 / 180) * 12 + originY;
 	}
 }
@@ -50,7 +50,10 @@ void CBat::Render()
 	default:
 		break;
 	}
-	animations[ani]->Render(x, y);
+	if (stopWatchStart > 0 && state != ENEMY_STATE_ON_FIRE)
+		animations[ani]->RenderFrame(x, y);
+	else
+		animations[ani]->Render(x, y);
 }
 
 void CBat::GetBoundingBox(float & left, float & top, float & right, float & bottom)

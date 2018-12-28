@@ -3,6 +3,7 @@
 
 #define MAPSET_BBOX_WIDTH	30
 #define MAPSET_BBOX_HEIGHT	18
+
 class CMapSet :
 	public CGameObject
 {

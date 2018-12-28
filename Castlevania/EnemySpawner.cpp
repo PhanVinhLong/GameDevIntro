@@ -110,7 +110,7 @@ void CEnemySpawner::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 				if (iter->GetId() == enemyId)
 					tmp++;
 
-			if (tmp < num)
+			if (tmp < num && stopWatchStart == 0)
 				SpawnEnemy(objects);
 		}
 	}

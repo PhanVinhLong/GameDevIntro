@@ -33,7 +33,7 @@ void CFishman::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 {
 	CEnemy::Update(dt, objects);
 
-	if(state != ENEMY_STATE_ON_FIRE)
+	if(state != ENEMY_STATE_ON_FIRE && stopWatchStart == 0)
 		vy += FISHMAN_GRAVITY * dt;
 
 	if (isOnGround && state == ENEMY_STATE_IDLE)
@@ -124,7 +124,10 @@ void CFishman::Render()
 	default:
 		break;
 	}
-	animations[ani]->Render(x, y);
+	if (stopWatchStart > 0 && state != ENEMY_STATE_ON_FIRE)
+		animations[ani]->RenderFrame(x, y);
+	else
+		animations[ani]->Render(x, y);
 }
 
 void CFishman::GetBoundingBox(float & left, float & top, float & right, float & bottom)

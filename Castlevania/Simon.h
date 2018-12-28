@@ -79,6 +79,7 @@
 #define SIMON_JUMP_TIME				650
 #define SIMON_INVISIBILITY_TIME		8000
 #define SIMON_FLASH_TIME			1000
+#define SIMON_LYING_TIME			2000
 
 class CSimon : public CGameObject
 {
@@ -104,6 +105,7 @@ class CSimon : public CGameObject
 	DWORD jumpStart;
 	DWORD invisibilityStart;
 	DWORD flashStart;
+	DWORD lyingStart;
 
 	CWhip* whip;
 	CStair* currentStair;
@@ -111,6 +113,8 @@ class CSimon : public CGameObject
 	vector<CWeapon*> subWeapon;
 	int subWeaponID;
 	int subweaponLevel;
+
+	D3DXVECTOR2 checkPoint;
 public:
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);
 	virtual void Render();
@@ -146,9 +150,10 @@ public:
 	void AddScore(int score);
 
 	void BeDamaged();
+	void Respawn();
 
 	void StartAttack();
-	void StartAttackSub();
+	void StartAttackSub(vector<LPGAMEOBJECT>* objects);
 	void StartJump();
 	void StartInvisibility();
 

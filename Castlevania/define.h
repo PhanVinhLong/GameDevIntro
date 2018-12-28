@@ -4,12 +4,17 @@
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
 #define BACKGROUND_COLOR 0
-#define SCREEN_WIDTH	17 * 16 //+ 800
-#define SCREEN_HEIGHT	HUD_HEIGHT + 16 * 14// + 300
+#define SCREEN_WIDTH	(17 * 16) // + 800
+#define SCREEN_HEIGHT	(HUD_HEIGHT + 16 * 14) // + 300
 
 #define MAX_FRAME_RATE	120
 
 #define HUD_HEIGHT			40
+
+#define GRID_WIDTH			(8*16)
+#define GRID_HEIGHT			(5*16 + 8)
+
+#define STOPWATCH_TIME		4000
 
 #define ID_SIMON			0
 #define ID_WHIP				1
@@ -23,6 +28,7 @@
 #define ID_ENEMY_SPAWNER	16
 #define ID_WATER			17
 #define ID_DOOR				18
+#define ID_CHECK_POINT		19
 
 #define ID_PANTHER			30
 #define ID_GHOUL			31

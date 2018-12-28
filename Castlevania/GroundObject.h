@@ -10,6 +10,7 @@
 #include "CrossItem.h"
 #include "BoomerangItem.h"
 #include "InvincibilityPotion.h"
+#include "MoneyBag.h"
 #include "define.h"
 
 #define GROUND_OBJ_ON_FIRE_TIME		450

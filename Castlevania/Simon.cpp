@@ -41,7 +41,7 @@ CSimon::CSimon()
 	life = 3;
 	score = 0;
 	heart = 5;
-	health = 16;
+	health = 2;
 
 	isOnGround = false;
 	isOnStair = false;
@@ -56,6 +56,13 @@ CSimon::CSimon()
 	attackStart = 0;
 	invisibilityStart = 0;
 	flashStart = 0;
+	lyingStart = 0;
+
+	wMapStart = 0;
+	wMapEnd = 100;
+
+	checkPoint.x = 30.0f;
+	checkPoint.y = 183.0f;
 }
 
 void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -158,10 +165,18 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		invisibilityStart = 0;
 
 	// update flash state
-	if (GetTickCount() - flashStart > SIMON_FLASH_TIME)
+	if (GetTickCount() - flashStart > SIMON_FLASH_TIME && flashStart > 0)
 	{
 		flashStart = 0;
 		UnlockUpdate();
+	}
+
+	// update die state
+	if (GetTickCount() - lyingStart > SIMON_LYING_TIME && lyingStart > 0)
+	{
+		lyingStart = 0;
+		if(life > 0)
+			Respawn();
 	}
 }
 
@@ -348,7 +363,7 @@ void CSimon::UpdateWhip(DWORD dt, vector<LPGAMEOBJECT>* objects)
 
 void CSimon::ColideWithObject(LPGAMEOBJECT obj, vector<LPGAMEOBJECT>* objects)
 {
-	if (obj->GetState() == STATE_DESTROYED)
+	if (obj->GetState() == STATE_DESTROYED || state == SIMON_STATE_DIE)
 		return;
 
 	switch (obj->GetId())
@@ -393,6 +408,16 @@ void CSimon::ColideWithObject(LPGAMEOBJECT obj, vector<LPGAMEOBJECT>* objects)
 		IncreaseHeart(1);
 		obj->SetState(STATE_DESTROYED);
 		break;
+	case ID_MONEY_BAG_RED:
+	case ID_MONEY_BAG_PURPLE:
+	case ID_MONEY_BAG_WHITE:
+	case ID_MONEY_BAG_BONUS:
+	{
+		CMoneyBag* money = dynamic_cast<CMoneyBag*>(obj);
+		AddScore(money->GetScore());
+		money->StartShowScore();
+		break;
+	}
 	case ID_ITEM_CROSS:
 		CTileMap::StartEffect();
 		for (auto iter : *objects)
@@ -449,6 +474,8 @@ void CSimon::ColideWithObject(LPGAMEOBJECT obj, vector<LPGAMEOBJECT>* objects)
 		objects->push_back(waterEffect);
 		health = 0;
 		state = SIMON_STATE_DIE;
+		vx = 0;
+		lyingStart = GetTickCount();
 		break;
 	}
 	case ID_DOOR:
@@ -457,6 +484,13 @@ void CSimon::ColideWithObject(LPGAMEOBJECT obj, vector<LPGAMEOBJECT>* objects)
 		vx = 0;
 		obj->Start();
 		break;
+	}
+	case ID_CHECK_POINT:
+	{
+		float cx, cy;
+		obj->GetPosition(cx, cy);
+		checkPoint.x = cx;
+		checkPoint.y = cy;
 	}
 	default:
 		break;
@@ -541,12 +575,15 @@ void CSimon::StartAttack()
 	attackStart = GetTickCount();
 }
 
-void CSimon::StartAttackSub()
+void CSimon::StartAttackSub(vector<LPGAMEOBJECT>* objects)
 {
 	if (GetSubWeapon().size() >= subweaponLevel)
 		return;
 
 	if (subWeaponID == ID_SUBWEAPON_NONE || heart <= 0)
+		return;
+
+	if (subWeaponID == ID_SUBWEAPON_STOPWATCH && heart < 5)
 		return;
 
 	if (attackStart > 0)
@@ -580,6 +617,26 @@ void CSimon::StartAttackSub()
 		break;
 	case ID_SUBWEAPON_BOOMERANG:
 		subWeapon.push_back(new CBoomerang({ x, y }, nx));
+		break;
+	case ID_SUBWEAPON_STOPWATCH:
+		for(auto iter: *objects)
+			switch (iter->GetId())
+			{
+			case ID_SIMON:
+				break;
+			case ID_ENEMY_SPAWNER:
+			case ID_BAT:
+			case ID_PANTHER:
+			case ID_GHOUL:
+			case ID_FISHMAN:
+			case ID_BULLET:
+			case ID_BOSS_PHANTOM_BAT:
+				iter->StartStopWatch();
+				break;
+			default:
+				break;
+			}
+		heart -= 4;
 		break;
 	default:
 		break;
@@ -624,7 +681,16 @@ void CSimon::AddScore(int score)
 void CSimon::BeDamaged()
 {
 	health -= 2;
-	if (health < 0) health = 0;
+	if (health <= 0)
+	{
+		health = 0;
+		state = SIMON_STATE_DIE;
+		isOnStair = false;
+		vx = 0;
+		LockUpdate();
+		lyingStart = GetTickCount();
+		return;
+	}
 	untouchableStart = GetTickCount();
 
 	if (!isOnStair)
@@ -633,6 +699,17 @@ void CSimon::BeDamaged()
 		isOnGround = false;
 		state = SIMON_STATE_DAMAGED_DEFLECT;
 	}
+}
+
+void CSimon::Respawn()
+{
+	life -= 1;
+	health = SIMON_MAX_HEALTH;
+	state = SIMON_STATE_IDLE;
+	nx = 1;
+	x = checkPoint.x;
+	y = checkPoint.y;
+	UnlockUpdate();
 }
 
 void CSimon::SetSubWeapon(int subWeaponID)
@@ -652,8 +729,6 @@ void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom
 	right = x + SIMON_BBOX_WIDTH;
 	bottom = y;
 	if (state == SIMON_STATE_SIT || state == SIMON_STATE_SIT_ATTACK)
-	{
 		top = y - SIMON_BBOX_SIT_HEIGHT;
-	}
 }
 

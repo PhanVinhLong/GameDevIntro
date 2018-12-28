@@ -103,6 +103,10 @@ void CPhantomBat::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		{
 		}
 	}
+
+	if(startOnFire > 0)
+		vx = vy = 0;
+
 	// check destroyed
 	if (startOnFire > 0 && GetTickCount() - startOnFire > PHANTOM_BAT_ON_FIRE_TIME)
 	{
@@ -132,7 +136,10 @@ void CPhantomBat::Render()
 	default:
 		break;
 	}
-	animations[ani]->Render(x, y);
+	if (stopWatchStart > 0 && startOnFire == 0)
+		animations[ani]->RenderFrame(x, y);
+	else
+		animations[ani]->Render(x, y);
 }
 
 void CPhantomBat::BeDamaged()

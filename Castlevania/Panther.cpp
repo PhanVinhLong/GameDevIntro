@@ -86,7 +86,7 @@ void CPanther::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 	coEvents.clear();
 
 	// fall down
-	if(state != ENEMY_STATE_ON_FIRE)
+	if(state != ENEMY_STATE_ON_FIRE && stopWatchStart == 0)
 		vy += PANTHER_GRAVITY * dt;
 
 	// check active condition
@@ -190,7 +190,10 @@ void CPanther::Render()
 	default:
 		break;
 	}
-	animations[ani]->Render(x, y);
+	if (stopWatchStart > 0 && state != ENEMY_STATE_ON_FIRE)
+		animations[ani]->RenderFrame(x, y);
+	else
+		animations[ani]->Render(x, y);
 }
 
 void CPanther::GetBoundingBox(float & left, float & top, float & right, float & bottom)

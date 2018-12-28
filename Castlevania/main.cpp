@@ -28,6 +28,7 @@
 #include "EnemySpawner.h"
 #include "Water.h"
 #include "Door.h"
+#include "CheckPoint.h"
 
 #include "TileMap.h"
 #include "Viewport.h"
@@ -37,6 +38,7 @@
 #include "Panther.h"
 #include "MapSet.h"
 #include "PhantomBat.h"
+#include "Grid.h"
 
 using json = nlohmann::json;
 
@@ -47,6 +49,7 @@ CSimon* simon;
 LPVIEWPORT viewport;
 LPTILEMAP tileMap;
 LPHUD hud;
+LPGRID grid;
 
 vector<LPGAMEOBJECT> objects;
 
@@ -64,6 +67,8 @@ void CSampleKeyHander::OnKeyDown(int KeyCode)
 	DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
 	if (simon->GetLockUpdate())
 		return;
+	if (simon->GetState() == SIMON_STATE_DIE)
+		return;
 	switch (KeyCode)
 	{
 	case DIK_Z:
@@ -75,12 +80,12 @@ void CSampleKeyHander::OnKeyDown(int KeyCode)
 		break;
 	case DIK_X:
 		if (game->IsKeyDown(DIK_UP))
-			simon->StartAttackSub();
+			simon->StartAttackSub(&objects);
 		else
 			simon->StartAttack();
 		break;
 	case DIK_C:
-		simon->StartAttackSub();
+		simon->StartAttackSub(&objects);
 		break;
 	case DIK_A: // reset
 		simon->SetState(SIMON_STATE_IDLE);
@@ -206,30 +211,43 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	TO-DO: Improve this function by loading texture,sprite,animation,object from file
 */
+
+std::wstring s2ws2(const std::string& s)
+{
+	int len;
+	int slength = (int)s.length() + 1;
+	len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0);
+	wchar_t* buf = new wchar_t[len];
+	MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, buf, len);
+	std::wstring r(buf);
+	delete[] buf;
+	return r;
+}
+
 void LoadResources()
 {
 	viewport = CViewport::GetInstance();
 
-	CTextures * textures = CTextures::GetInstance();
-
 	tileMap = new CTileMap();
 	tileMap->LoadFromFile(L"textures\\map01.json");
-	
-	textures->Add(ID_TEX_BBOX, L"textures\\bbox.png", D3DCOLOR_XRGB(255, 255, 255));
-	textures->Add(ID_TEX_SIMON, L"textures\\simon.png", D3DCOLOR_XRGB(255, 0, 255));
-	textures->Add(ID_TEX_ENEMY, L"textures\\enemy.png", D3DCOLOR_XRGB(96, 68, 106));
-	textures->Add(ID_TEX_OBJECT, L"textures\\objects.png", D3DCOLOR_XRGB(255, 0, 255));
-	textures->Add(ID_TEX_ITEM, L"textures\\items.png", D3DCOLOR_XRGB(255, 0, 255));
-	textures->Add(ID_TEX_HUD_BG, L"textures\\HUD.png", D3DCOLOR_XRGB(0, 0, 0));
-	textures->Add(ID_TEX_HEALTH, L"textures\\health.png", 0);
-	textures->Add(ID_TEX_BOSS, L"textures\\boss.png", D3DCOLOR_XRGB(168, 40, 88));
-
+	DebugOut(L"%d %d\n", tileMap->GetWidth(), tileMap->GetHeight());
+	grid = new CGrid(22, 6);
 
 	CSprites * sprites = CSprites::GetInstance();
 	CAnimations * animations = CAnimations::GetInstance();
+	CTextures * textures = CTextures::GetInstance();
 
 	ifstream file("textures\\animation.json");
 	json j = json::parse(file);
+
+	// Load textures
+	for (auto iter : j["texture"])
+	{
+		wstring sTmp;
+		sTmp = s2ws2(iter[1]);
+		LPCWSTR imagePath = sTmp.c_str();
+		textures->Add(iter[0], imagePath, iter[2]);
+	}
 
 	// Load sprites
 	for (auto iter : j["sprite"])
@@ -248,11 +266,6 @@ void LoadResources()
 
 	file.open("textures\\map01.json");
 	j = json::parse(file);
-
-	// Load objects
-	simon = CSimon::GetInstance();
-	simon->SetPosition(30.0f, 143.0f);
-	objects.push_back(simon);
 
 	for (auto i : j["layers"])
 	{
@@ -301,7 +314,7 @@ void LoadResources()
 				CPanther* panther = new CPanther({ float(iter["x"]), float(iter["y"]) + iter["height"] }, iter["properties"][0]["value"], iter["properties"][1]["value"]);
 				objects.push_back(panther);
 			}
-		else if (i["name"] == "boss")	// panther enemies
+		else if (i["name"] == "boss")	// boss
 			for (auto iter : i["objects"])
 			{
 				CPhantomBat* phantomBat  = new CPhantomBat({ float(iter["x"]), float(iter["y"]) + iter["height"] });
@@ -326,11 +339,24 @@ void LoadResources()
 					iter["properties"][0]["value"], iter["properties"][1]["value"], iter["properties"][2]["value"], iter["properties"][3]["value"]);
 				objects.push_back(spawner);
 			}
+		else if (i["name"] == "checkpoint")
+			for (auto iter : i["objects"])
+			{
+				CCheckPoint* checkPoint = new CCheckPoint({ float(iter["x"]), float(iter["y"]) + iter["height"] });
+				objects.push_back(checkPoint);
+			}
 	}
 
 	// add a HUD_HEIGHT to objects's heigth
 	for (auto iter : objects)
 		iter->AddPosition(0, HUD_HEIGHT);
+
+	grid->LoadObjects(&objects);
+
+	// Add simon
+	simon = CSimon::GetInstance();
+	simon->SetPosition(30.0f, 143.0f + HUD_HEIGHT);
+	objects.push_back(simon);
 
 	hud = CHUD::GetInstance();
 }
@@ -343,17 +369,19 @@ void Update(DWORD dt)
 {
 	// We know that Mario is the first object in the list hence we won't add him into the colliable object list
 	// TO-DO: This is a "dirty" way, need a more organized way 
-	vector<LPGAMEOBJECT> coObjects;
 
 	/*for (int i = 1; i < objects.size(); i++)
 	{
 		coObjects.push_back(objects[i]);
 	}*/
 
+	//objects.clear();
+	grid->Update(dt, &objects);
+
 	for (auto iter : objects)
 		iter->Update(dt, &objects);
 
-	for (int i = 1; i < objects.size(); i++)
+	for (int i = 0; i < objects.size(); i++)
 	{
 		if (objects[i]->GetState() == STATE_DESTROYED)
 		{

@@ -54,6 +54,8 @@ protected:
 	int nextItemId;
 	bool isOnGround;
 
+	DWORD stopWatchStart;
+
 public:
 	void SetPosition(float x, float y) { this->x = x; this->y = y; }
 	void AddPosition(float x, float y) { this->x = this->x + x; this->y = this->y + y; }
@@ -88,6 +90,7 @@ public:
 	virtual int GetScore() { return score; }
 	virtual void Start() {}
 	virtual void BeDamaged();
+	virtual void StartStopWatch();
 
 	int GetNx();
 	int GetNy();

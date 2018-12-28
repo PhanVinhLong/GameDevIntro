@@ -52,6 +52,12 @@ void CGroundObject::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 		case ID_ITEM_INVINCIBILITY_POTION:
 			nextItem = new CInvincibilityPotion({ x, y });
 			break;
+		case ID_MONEY_BAG_RED:
+		case ID_MONEY_BAG_PURPLE:
+		case ID_MONEY_BAG_WHITE:
+		case ID_MONEY_BAG_BONUS:
+			nextItem = new CMoneyBag({ x, y }, GetNextItemId());
+			break;
 		default:
 			nextItem = NULL;
 			break;

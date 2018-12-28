@@ -60,6 +60,9 @@ public:
 	void Draw(D3DXVECTOR2 position, int alpha = 255);
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* object = NULL);
 
+	int GetWidth();
+	int GetHeight();
+
 	static void StartEffect() { effectStart = GetTickCount(); }
 };
 

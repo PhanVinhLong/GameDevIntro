@@ -42,7 +42,7 @@ void CTileSet::LoadFromFile(LPCWSTR filePath)
 		}
 
 	// Add texture
-	CTextures::GetInstance()->Add(ID_TEX_TILESET_01, imagePath, D3DCOLOR_RGBA(5,5,5,255));
+	CTextures::GetInstance()->Add(ID_TEX_TILESET_01, imagePath, D3DCOLOR_XRGB(5,5,5));
 	this->texture = CTextures::GetInstance()->Get(ID_TEX_TILESET_01);
 
 	file.close();
@@ -160,5 +160,15 @@ void CTileMap::Update(DWORD dt, vector<LPGAMEOBJECT>* object)
 {
 	if (effectStart > 0 && GetTickCount() - effectStart > TILEMAP_CROSS_EFFECT_TIME)
 		effectStart = 0;
+}
+
+int CTileMap::GetWidth()
+{
+	return tileRow * tileSet->GetTileWidth();
+}
+
+int CTileMap::GetHeight()
+{
+	return tileColumn * tileSet->GetTileHeight();
 }
 

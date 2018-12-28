@@ -16,6 +16,7 @@ CGameObject::CGameObject()
 	nx = ny = 1;
 	isOnGround = false;
 	score = 0;
+	stopWatchStart = 0;
 }
 
 void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -23,6 +24,12 @@ void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	this->dt = dt;
 	dx = vx * dt;
 	dy = vy * dt;
+
+	if (GetTickCount() - stopWatchStart > STOPWATCH_TIME && stopWatchStart > 0)
+		stopWatchStart = 0;
+
+	if (stopWatchStart != 0)
+		dx = dy = 0;
 }
 
 /*
@@ -132,7 +139,7 @@ void CGameObject::RenderBoundingBox(int alpha)
 	rect.bottom = (int)b - (int)t;
 
 	D3DXVECTOR2 viewportPos = CViewport::GetInstance()->WorldToViewportPos({ l, t });
-	CGame::GetInstance()->Draw(viewportPos.x, viewportPos.y, bbox, rect.left, rect.top, rect.right, rect.bottom, 0);
+	CGame::GetInstance()->Draw(viewportPos.x, viewportPos.y, bbox, rect.left, rect.top, rect.right, rect.bottom, alpha);
 }
 
 void CGameObject::AddAnimation(int aniId)
@@ -150,6 +157,11 @@ void CGameObject::ResetAnimation()
 
 void CGameObject::BeDamaged()
 {
+}
+
+void CGameObject::StartStopWatch()
+{
+	stopWatchStart = GetTickCount();
 }
 
 int CGameObject::GetNx()

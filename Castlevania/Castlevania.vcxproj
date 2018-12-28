@@ -137,6 +137,8 @@
     <ClCompile Include="BoomerangItem.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Candle.cpp" />
+    <ClCompile Include="CheckPoint.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="InvincibilityPotion.cpp" />
     <ClCompile Include="MoneyBag.cpp" />
     <ClCompile Include="PhantomBat.cpp" />
@@ -187,6 +189,8 @@
     <ClInclude Include="BoomerangItem.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Candle.h" />
+    <ClInclude Include="CheckPoint.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="InvincibilityPotion.h" />
     <ClInclude Include="MoneyBag.h" />
     <ClInclude Include="PhantomBat.h" />

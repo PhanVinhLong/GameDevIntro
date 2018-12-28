@@ -46,7 +46,10 @@ void CGhoul::Render()
 	default:
 		break;
 	}
-	animations[ani]->Render(x, y);
+	if (stopWatchStart > 0 && state != ENEMY_STATE_ON_FIRE)
+		animations[ani]->RenderFrame(x, y);
+	else
+		animations[ani]->Render(x, y);
 }
 
 void CGhoul::GetBoundingBox(float & left, float & top, float & right, float & bottom)
