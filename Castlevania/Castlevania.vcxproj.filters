@@ -156,6 +156,9 @@
     <ClCompile Include="InvincibilityPotion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MoneyBag.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -300,6 +303,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InvincibilityPotion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MoneyBag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

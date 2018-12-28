@@ -141,7 +141,12 @@ void CSampleKeyHander::KeyState(BYTE *states)
 		else if (simon->GetColidingStair())
 		{
 			if (simon->GetColidingStair()->GetNy() < 0)
+			{
+				float x, y;
+				simon->GetColidingStair()->GetPosition(x, y);
+				simon->SetPosition(x, y);
 				simon->SetState(SIMON_STATE_DOWN_STAIR);
+			}
 			else
 				simon->SetState(SIMON_STATE_SIT);
 		}
@@ -156,9 +161,9 @@ void CSampleKeyHander::KeyState(BYTE *states)
 		else if (simon->GetColidingStair())
 			if (simon->GetColidingStair()->GetNy() > 0)
 			{
-				//float x, y;
-				//simon->GetPosition(x, y);
-				//simon->SetPosition(x, y - 2);
+				float x, y;
+				simon->GetColidingStair()->GetPosition(x, y);
+				simon->SetPosition(x, y);
 				simon->SetState(SIMON_STATE_UP_STAIR);
 			}
 	}

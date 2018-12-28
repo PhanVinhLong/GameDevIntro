@@ -138,6 +138,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Candle.cpp" />
     <ClCompile Include="InvincibilityPotion.cpp" />
+    <ClCompile Include="MoneyBag.cpp" />
     <ClCompile Include="PhantomBat.cpp" />
     <ClCompile Include="CrossItem.cpp" />
     <ClCompile Include="Door.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Candle.h" />
     <ClInclude Include="InvincibilityPotion.h" />
+    <ClInclude Include="MoneyBag.h" />
     <ClInclude Include="PhantomBat.h" />
     <ClInclude Include="CrossItem.h" />
     <ClInclude Include="Door.h" />
