@@ -1,23 +1,40 @@
-#include "GroundObject.h"
+#include "Brick.h"
 
-CGroundObject::CGroundObject()
+CBrick::CBrick(D3DXVECTOR2 position, int nextItemTypeID)
 {
-	onFireStart = 0;
+	x = position.x;
+	y = position.y;
 	state = GROUND_OBJ_STATE_NORMAL;
-	AddAnimation(ID_ANI_ENEMY_ON_FIRE);
+	isBroken = false;
+	id = ID_BRICK;
+	this->nextItemId = nextItemTypeID;
+
+	AddAnimation(ID_ANI_BRICK);
 }
 
-CGroundObject::~CGroundObject()
+CBrick::~CBrick()
 {
 }
 
-void CGroundObject::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
+void CBrick::GetBoundingBox(float & l, float & t, float & r, float & b)
+{
+	if (state == GROUND_OBJ_STATE_NORMAL)
+	{
+		l = x;
+		t = y - BRICK_BBOX_HEIGHT;
+		r = x + BRICK_BBOX_WIDTH;
+		b = y;
+	}
+	else
+		l = t = r = b = 0;
+}
+
+void CBrick::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 {
 	CGameObject::Update(dt);
-	if (GetTickCount() - onFireStart > GROUND_OBJ_ON_FIRE_TIME && onFireStart > 0)
+	if (!isBroken && state == GROUND_OBJ_STATE_ON_FIRE)
 	{
-		onFireStart = 0;
-		state = STATE_DESTROYED;
+		isBroken = true;
 
 		CGameObject* nextItem;
 		switch (GetNextItemId())
@@ -71,20 +88,21 @@ void CGroundObject::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 		}
 		if (nextItem)
 			objects->push_back(nextItem);
+
+		float ox, oy;
+		GetPosition(ox, oy);
+		CBrickEffect* effect = new CBrickEffect({ ox, oy });
+		objects->push_back(effect);
 	}
 }
 
-void CGroundObject::Render()
+void CBrick::Render()
 {
-	if (state == GROUND_OBJ_STATE_ON_FIRE)
-		animations[0]->Render(x, y);
-	else
+	if (state != GROUND_OBJ_STATE_NORMAL)
 		animations[1]->Render(x, y);
 }
 
-void CGroundObject::BeDamaged()
+void CBrick::BeDamaged()
 {
-	onFireStart = GetTickCount();
 	state = GROUND_OBJ_STATE_ON_FIRE;
-	y -= 6;
 }

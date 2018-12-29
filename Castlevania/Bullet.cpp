@@ -24,6 +24,8 @@ void CBullet::GetBoundingBox(float & l, float & t, float & r, float & b)
 	t = y - BULLET_BBOX_HEIGHT;
 	r = x + BULLET_BBOX_WIDTH;
 	b = y;
+	if (state == ENEMY_STATE_ON_FIRE)
+		l = t = r = b = 0;
 }
 
 void CBullet::Render()

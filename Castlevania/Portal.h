@@ -2,7 +2,7 @@
 #include "GameObject.h"
 
 #define PORTAL_BBOX_WIDTH	12
-#define PORTAL_BBOX_HEIGHT	12
+#define PORTAL_BBOX_HEIGHT	10
 
 class CPortal :
 	public CGameObject

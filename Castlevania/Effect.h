@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 
-#define EFFECT_GRAVITY		0.0002f
+#define EFFECT_GRAVITY		0.00025f
 
 #define EFFECT_ALIVE_TIME	2000
 

@@ -38,14 +38,17 @@ CSimon::CSimon()
 
 	whip = new CWhip();
 
-	life = 3;
+	life = SIMON_MAX_HEALTH;
 	score = 0;
 	heart = 5;
 	health = 2;
 
+	time = 300;
+
 	isOnGround = false;
 	isOnStair = false;
 	lockUpdate = false;
+	caculateScore = false;
 
 	currentStair = NULL;
 	colidingStair = NULL;
@@ -57,6 +60,7 @@ CSimon::CSimon()
 	invisibilityStart = 0;
 	flashStart = 0;
 	lyingStart = 0;
+	timeStart = GetTickCount();
 
 	wMapStart = 0;
 	wMapEnd = 100;
@@ -70,6 +74,40 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	// Calculate dx, dy 
 	CGameObject::Update(dt);
 
+	// calculate score
+	if (calculateStart > 0)
+	{
+		if (health < SIMON_MAX_HEALTH)
+		{
+			if (GetTickCount() - calculateStart > 100)
+			{
+				health++;
+				calculateStart = GetTickCount();
+			}
+		}
+		else if (time > 0)
+		{
+			if (GetTickCount() - calculateStart > 10)
+			{
+				time--;
+				AddScore(10);
+				calculateStart = GetTickCount();
+			}
+		}
+		else if (heart > 0)
+		{
+			if (GetTickCount() - calculateStart > 200)
+			{
+				heart--;
+				AddScore(100);
+			}
+		}
+		else
+		{
+			// move to game over scene
+		}
+	}
+
 	// Simple fall down
 	if(!isOnStair)
 		vy += SIMON_GRAVITY * dt;
@@ -78,7 +116,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		
 	for (int i = 0; i < coObjects->size(); i++)
 	{
-		if(coObjects->at(i)->GetId() == ID_WALL)
+		if(coObjects->at(i)->GetId() == ID_WALL || coObjects->at(i)->GetId() == ID_BRICK)
 			wallObjects.push_back(coObjects->at(i));
 	}
 
@@ -177,6 +215,25 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		lyingStart = 0;
 		if(life > 0)
 			Respawn();
+	}
+
+	// update time
+	if (GetTickCount() - timeStart > 1000)
+	{
+		if (calculateStart > 0)
+			return;
+		timeStart = GetTickCount();
+		if (time > 0)
+			time--;
+		if (time == 0 && state != SIMON_STATE_DIE)
+		{
+			health = 0;
+			state = SIMON_STATE_DIE;
+			isOnStair = false;
+			vx = 0;
+			LockUpdate();
+			lyingStart = GetTickCount();
+		}
 	}
 }
 
@@ -491,7 +548,30 @@ void CSimon::ColideWithObject(LPGAMEOBJECT obj, vector<LPGAMEOBJECT>* objects)
 		obj->GetPosition(cx, cy);
 		checkPoint.x = cx;
 		checkPoint.y = cy;
+		break;
 	}
+	case ID_EASTER_EGG:
+	{
+		CEasterEgg* eg = dynamic_cast<CEasterEgg*>(obj);
+		eg->BeTouched(objects);
+		break;
+	}
+	case ID_DOUBLE_SHOOT:
+		SetSubWeaponLevel(2);
+		obj->SetState(STATE_DESTROYED);
+		break;
+	case ID_TRIPLE_SHOOT:
+		SetSubWeaponLevel(3);
+		obj->SetState(STATE_DESTROYED);
+		break;
+	case ID_POT_ROAST:
+		IncreaseHealth(6);
+		obj->SetState(STATE_DESTROYED);
+		break;
+	case ID_CRYSTAL_BALL:
+		StartCalculateScore();
+		obj->SetState(STATE_DESTROYED);
+		break;
 	default:
 		break;
 	}
@@ -655,6 +735,11 @@ void CSimon::StartInvisibility()
 	invisibilityStart = GetTickCount();
 }
 
+void CSimon::StartCalculateScore()
+{
+	calculateStart = GetTickCount();
+}
+
 void CSimon::MoveRight(DWORD dt)
 {
 	state = SIMON_STATE_WALKING_RIGHT;
@@ -665,6 +750,13 @@ void CSimon::IncreaseHeart(int heartNum)
 {
 	heart += heartNum;
 	DebugOut(L"Heart Increased: %d\n", heart);
+}
+
+void CSimon::IncreaseHealth(int num)
+{
+	health += num;
+	if (health > SIMON_MAX_HEALTH)
+		health = SIMON_MAX_HEALTH;
 }
 
 void CSimon::UpgradeWhip()
@@ -704,6 +796,7 @@ void CSimon::BeDamaged()
 void CSimon::Respawn()
 {
 	life -= 1;
+	time = 300;
 	health = SIMON_MAX_HEALTH;
 	state = SIMON_STATE_IDLE;
 	nx = 1;
@@ -716,6 +809,11 @@ void CSimon::SetSubWeapon(int subWeaponID)
 {
 	this->subWeaponID = subWeaponID;
 	DebugOut(L"Weapon Set: %d\n", subWeaponID);
+}
+
+void CSimon::SetSubWeaponLevel(int level)
+{
+	subweaponLevel = level;
 }
 
 void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom)

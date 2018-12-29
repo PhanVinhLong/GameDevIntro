@@ -14,6 +14,7 @@
 #include "MapSet.h"
 #include "WaterEffect.h"
 #include "Boomerang.h"
+#include "EasterEgg.h"
 
 #define SIMON_WALKING_SPEED				0.06f
 #define SIMON_ON_STAIR_SPEED			0.037f
@@ -89,6 +90,7 @@ class CSimon : public CGameObject
 	int life;
 	int heart;
 	int health;
+	int time;
 
 	int wMapStart;
 	int wMapEnd;
@@ -98,6 +100,7 @@ class CSimon : public CGameObject
 	bool isFalling;
 	bool isOnStair;
 	bool lockUpdate;
+	bool caculateScore;
 
 	DWORD untouchableStart;
 	DWORD attackStart;
@@ -106,6 +109,8 @@ class CSimon : public CGameObject
 	DWORD invisibilityStart;
 	DWORD flashStart;
 	DWORD lyingStart;
+	DWORD timeStart;
+	DWORD calculateStart;
 
 	CWhip* whip;
 	CStair* currentStair;
@@ -136,6 +141,8 @@ public:
 	int GetHealth() { return health; }
 	int GetScore() { return score; }
 	int GetSubWeaponID() { return subWeaponID; }
+	int GetMultiShootLevel() { return subweaponLevel; }
+	int GetTime() { return time; }
 	int GetLife() { return life; }
 	bool GetLockUpdate() { return lockUpdate; }
 	vector<CWeapon*> GetSubWeapon() { return subWeapon; }
@@ -145,7 +152,9 @@ public:
 	void ColideWithObject(LPGAMEOBJECT obj, vector<LPGAMEOBJECT>* objects);
 	void SetState(int state);
 	void SetSubWeapon(int subWeaponID);
+	void SetSubWeaponLevel(int level);
 	void IncreaseHeart(int heartNum);
+	void IncreaseHealth(int num);
 	void UpgradeWhip();
 	void AddScore(int score);
 
@@ -156,6 +165,7 @@ public:
 	void StartAttackSub(vector<LPGAMEOBJECT>* objects);
 	void StartJump();
 	void StartInvisibility();
+	void StartCalculateScore();
 
 	void LockUpdate() { lockUpdate = true; }
 	void UnlockUpdate() { lockUpdate = false; }

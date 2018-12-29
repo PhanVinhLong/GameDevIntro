@@ -28,6 +28,7 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 		case ID_FISHMAN:
 		case ID_BULLET:
 		case ID_BOSS_PHANTOM_BAT:
+		case ID_BRICK:
 		{
 			float al, at, ar, ab, bl, bt, br, bb;
 			GetBoundingBox(al, at, ar, ab);
@@ -62,6 +63,7 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 		case ID_GHOUL:
 		case ID_FISHMAN:
 		case ID_BOSS_PHANTOM_BAT:
+		case ID_BRICK:
 			iter->obj->BeDamaged();
 			if (id == ID_SUBWEAPON_DAGGER)
 				state = STATE_DESTROYED;

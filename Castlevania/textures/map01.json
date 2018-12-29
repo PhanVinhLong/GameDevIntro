@@ -105,7 +105,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -350,7 +350,7 @@
          "name":"portal",
          "objects":[
                 {
-                 "height":15,
+                 "height":10,
                  "id":141,
                  "name":"portal-01",
                  "properties":[
@@ -367,9 +367,9 @@
                  "rotation":0,
                  "type":"portal",
                  "visible":true,
-                 "width":17,
-                 "x":687,
-                 "y":130
+                 "width":12,
+                 "x":690,
+                 "y":135
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1961,6 +1961,71 @@
         }, 
         {
          "draworder":"topdown",
+         "id":17,
+         "name":"easteregg",
+         "objects":[
+                {
+                 "height":5,
+                 "id":209,
+                 "name":"eg-01",
+                 "properties":[
+                        {
+                         "name":"destinationx",
+                         "type":"int",
+                         "value":585
+                        }, 
+                        {
+                         "name":"destinationy",
+                         "type":"int",
+                         "value":177
+                        }, 
+                        {
+                         "name":"reward",
+                         "type":"int",
+                         "value":63
+                        }],
+                 "rotation":0,
+                 "type":"easteregg",
+                 "visible":true,
+                 "width":15,
+                 "x":725,
+                 "y":140
+                }, 
+                {
+                 "height":5,
+                 "id":211,
+                 "name":"eg-02",
+                 "properties":[
+                        {
+                         "name":"destinationx",
+                         "type":"int",
+                         "value":1923
+                        }, 
+                        {
+                         "name":"destinationy",
+                         "type":"int",
+                         "value":463
+                        }, 
+                        {
+                         "name":"reward",
+                         "type":"int",
+                         "value":63
+                        }],
+                 "rotation":0,
+                 "type":"easteregg",
+                 "visible":true,
+                 "width":15,
+                 "x":2008,
+                 "y":491
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":5,
          "name":"wall",
          "objects":[
@@ -2048,7 +2113,7 @@
                  "rotation":0,
                  "type":"wall",
                  "visible":true,
-                 "width":94,
+                 "width":79,
                  "x":929,
                  "y":274
                 }, 
@@ -2081,8 +2146,8 @@
                  "rotation":0,
                  "type":"wall",
                  "visible":true,
-                 "width":62,
-                 "x":1793,
+                 "width":46,
+                 "x":1809,
                  "y":257
                 }, 
                 {
@@ -2169,7 +2234,7 @@
                  "rotation":0,
                  "type":"wall",
                  "visible":true,
-                 "width":30,
+                 "width":15,
                  "x":2721,
                  "y":306
                 }, 
@@ -2268,7 +2333,7 @@
                  "rotation":0,
                  "type":"wall",
                  "visible":true,
-                 "width":158,
+                 "width":143,
                  "x":1873,
                  "y":434
                 }, 
@@ -2284,15 +2349,111 @@
                  "y":176
                 }, 
                 {
-                 "height":0.5,
-                 "id":177,
-                 "name":"",
+                 "height":48,
+                 "id":205,
+                 "name":"30",
                  "rotation":0,
-                 "type":"",
+                 "type":"wall",
                  "visible":true,
-                 "width":0.5,
-                 "x":2907.5,
-                 "y":193
+                 "width":17,
+                 "x":1793,
+                 "y":257
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":false,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":16,
+         "name":"brick",
+         "objects":[
+                {
+                 "height":13,
+                 "id":201,
+                 "name":"brick-01",
+                 "properties":[
+                        {
+                         "name":"reward",
+                         "type":"int",
+                         "value":61
+                        }],
+                 "rotation":0,
+                 "type":"brick",
+                 "visible":true,
+                 "width":16,
+                 "x":1007,
+                 "y":274
+                }, 
+                {
+                 "height":13,
+                 "id":203,
+                 "name":"brick-02",
+                 "properties":[
+                        {
+                         "name":"reward",
+                         "type":"int",
+                         "value":66
+                        }],
+                 "rotation":0,
+                 "type":"brick",
+                 "visible":true,
+                 "width":16,
+                 "x":1793,
+                 "y":322
+                }, 
+                {
+                 "height":13,
+                 "id":204,
+                 "name":"brick-03",
+                 "properties":[
+                        {
+                         "name":"reward",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"brick",
+                 "visible":true,
+                 "width":16,
+                 "x":1793,
+                 "y":306
+                }, 
+                {
+                 "height":13,
+                 "id":206,
+                 "name":"brick-04",
+                 "properties":[
+                        {
+                         "name":"reward",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"brick",
+                 "visible":true,
+                 "width":16,
+                 "x":2015,
+                 "y":434
+                }, 
+                {
+                 "height":13,
+                 "id":207,
+                 "name":"brick-05",
+                 "properties":[
+                        {
+                         "name":"reward",
+                         "type":"int",
+                         "value":64
+                        }],
+                 "rotation":0,
+                 "type":"brick",
+                 "visible":true,
+                 "width":16,
+                 "x":2735,
+                 "y":306
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2619,8 +2780,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":16,
- "nextobjectid":199,
+ "nextlayerid":18,
+ "nextobjectid":212,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.0",

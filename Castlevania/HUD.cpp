@@ -47,7 +47,7 @@ void CHUD::Draw(D3DXVECTOR2 position)
 
 	// time
 	text->DrawString("TIME", { 105,3 });
-	text->DrawString("0300", { 141, 3 });
+	text->DrawString(IntToChar(player->GetTime(), 3), { 141, 3 });
 
 	// state
 	text->DrawString("STAGE", { 181,3 });
@@ -74,6 +74,9 @@ void CHUD::Draw(D3DXVECTOR2 position)
 
 	// item
 	GetItemSprite()->Draw(165, 31);
+
+	// multi shoot
+	GetMultiShootSprite()->Draw(230, 32);
 
 	// player's life
 	text->DrawString(IntToChar(player->GetLife(), 2), { 205, 25 });
@@ -106,6 +109,26 @@ LPSPRITE CHUD::GetItemSprite()
 		break;
 	case ID_SUBWEAPON_STOPWATCH:
 		spriteId = 12007;
+		break;
+	default:
+		spriteId = 0;
+		break;
+	}
+	return CSprites::GetInstance()->Get(spriteId);
+}
+
+LPSPRITE CHUD::GetMultiShootSprite()
+{
+	int spriteId;
+	int multiShootLevel = player->GetMultiShootLevel();
+
+	switch (multiShootLevel)
+	{
+	case 2:
+		spriteId = 12050;
+		break;
+	case 3:
+		spriteId = 12051;
 		break;
 	default:
 		spriteId = 0;

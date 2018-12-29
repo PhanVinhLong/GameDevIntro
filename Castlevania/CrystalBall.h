@@ -1,17 +1,17 @@
 #pragma once
 #include "Item.h"
-
-#define DAGGER_ITEM_GRAVITY			0.0004f
-#define DAGGER_ITEM_BBOX_WIDTH		15
-#define DAGGER_ITEM_BBOX_HEIGHT		15
-
-class CDaggerItem :
+class CCrystalBall :
 	public CItem
 {
+#define CRYSTAL_BALL_GRAVITY			0.0002f
+#define CRYSTAL_BALL_BBOX_WIDTH			15
+#define CRYSTAL_BALL_BBOX_HEIGHT		15
+
 public:
-	CDaggerItem(D3DXVECTOR2 position);
-	~CDaggerItem();
+	CCrystalBall(D3DXVECTOR2 position);
+	~CCrystalBall();
 
 	virtual void GetBoundingBox(float &l, float &t, float &r, float &b);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects);
 };
+

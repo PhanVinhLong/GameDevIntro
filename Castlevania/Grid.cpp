@@ -81,18 +81,22 @@ void CGrid::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 		case ID_WATER:
 		case ID_DOOR:
 		case ID_PANTHER:
+		case ID_BRICK:
 			break;
 		default:
 			moveObjects.insert(iter);
 			break;
 		}
 
-	// Add move objects
 	objects->clear();
-	for (auto iter : moveObjects)
-		objects->push_back(iter);
 
 	// Add ground objects
 	GetObjects(objects);
+
+	// Add move objects
+	for (auto iter : moveObjects)
+		objects->push_back(iter);
+
+	
 }
 

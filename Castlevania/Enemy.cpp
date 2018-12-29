@@ -14,7 +14,6 @@ CEnemy::~CEnemy()
 void CEnemy::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 {
 	CGameObject::Update(dt);
-	DebugOut(L"%d\n", (int)stopWatchStart);
 
 	vector<LPGAMEOBJECT> wallObjects;
 

@@ -32,6 +32,7 @@ public:
 	static CHUD* GetInstance();
 
 	LPSPRITE GetItemSprite();
+	LPSPRITE GetMultiShootSprite();
 
 	void SetEnemyHealth(int health);
 };

@@ -5,6 +5,7 @@
 class CItem :
 	public CGameObject
 {
+protected:
 	DWORD disappearStart;
 public:
 	CItem();

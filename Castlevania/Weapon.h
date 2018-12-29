@@ -5,6 +5,7 @@
 #include "WhipUpgrade.h"
 #include "DaggerItem.h"
 #include "SmallHeart.h"
+#include "BrickEffect.h"
 
 #define ID_SUBWEAPON_NONE	-1
 

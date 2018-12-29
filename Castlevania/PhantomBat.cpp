@@ -112,6 +112,8 @@ void CPhantomBat::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	{
 		startOnFire = 0;
 		state = STATE_DESTROYED;
+		CCrystalBall* ball = new CCrystalBall({ x, y });
+		coObjects->push_back(ball);
 	}
 
 	// update untouchable

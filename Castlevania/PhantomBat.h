@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Simon.h"
+#include "CrystalBall.h"
 #include "HUD.h"
 
 #define PHANTOM_BAT_BBOX_WIDTH			50

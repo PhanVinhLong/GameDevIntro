@@ -29,6 +29,8 @@
 #define ID_WATER			17
 #define ID_DOOR				18
 #define ID_CHECK_POINT		19
+#define ID_BRICK			70
+#define ID_EASTER_EGG		71
 
 #define ID_PANTHER			30
 #define ID_GHOUL			31
@@ -50,6 +52,10 @@
 #define ID_MONEY_BAG_PURPLE				61
 #define ID_MONEY_BAG_WHITE				62
 #define ID_MONEY_BAG_BONUS				63
+#define ID_DOUBLE_SHOOT					64
+#define ID_TRIPLE_SHOOT					65
+#define ID_POT_ROAST					66
+#define ID_CRYSTAL_BALL					67
 
 #define ID_SUBWEAPON_DAGGER				40
 #define ID_SUBWEAPON_AXE				41
@@ -135,6 +141,11 @@
 #define ID_ANI_BOOMERANG_RIGHT			345
 #define ID_ANI_BOOMERANG_LEFT			346
 
+#define ID_ANI_DOUBLE_SHOOT_ITEM		347
+#define ID_ANI_TRIPLE_SHOOT_ITEM		348
+#define ID_ANI_POT_ROAST_ITEM			349
+#define ID_ANI_CRYSTAL_BALL				350
+
 #define ID_ANI_ENEMY_ON_FIRE			400
 
 #define ID_ANI_PANTHER_IDLE_RIGHT		411
@@ -163,11 +174,14 @@
 #define ID_ANI_BULLET_LEFT				452
 
 #define ID_ANI_WATER_EFFECT				500
+#define ID_ANI_BRICK_EFFECT				501
 
 #define ID_ANI_DOOR_OPEN				231
 #define ID_ANI_DOOR_CLOSE				232
 #define ID_ANI_DOOR_OPENING				233
 #define ID_ANI_DOOR_CLOSING				234
+
+#define ID_ANI_BRICK					235
 
 #define ID_ANI_PHANTOM_BAT_IDLE			511
 #define ID_ANI_PHANTOM_BAT_ACTIVE		512

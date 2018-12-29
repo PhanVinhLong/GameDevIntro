@@ -29,6 +29,7 @@
 #include "Water.h"
 #include "Door.h"
 #include "CheckPoint.h"
+#include "Brick.h"
 
 #include "TileMap.h"
 #include "Viewport.h"
@@ -230,7 +231,6 @@ void LoadResources()
 
 	tileMap = new CTileMap();
 	tileMap->LoadFromFile(L"textures\\map01.json");
-	DebugOut(L"%d %d\n", tileMap->GetWidth(), tileMap->GetHeight());
 	grid = new CGrid(22, 6);
 
 	CSprites * sprites = CSprites::GetInstance();
@@ -345,6 +345,19 @@ void LoadResources()
 				CCheckPoint* checkPoint = new CCheckPoint({ float(iter["x"]), float(iter["y"]) + iter["height"] });
 				objects.push_back(checkPoint);
 			}
+		else if (i["name"] == "brick")
+			for (auto iter : i["objects"])
+			{
+				CBrick* brick = new CBrick({ float(iter["x"]), float(iter["y"]) + iter["height"] }, iter["properties"][0]["value"]);
+				objects.push_back(brick);
+			}
+		else if (i["name"] == "easteregg")
+			for (auto iter : i["objects"])
+			{
+				CEasterEgg* eg = new CEasterEgg({ float(iter["x"]), float(iter["y"]) + iter["height"] },
+					{ iter["properties"][0]["value"], iter["properties"][1]["value"] }, iter["properties"][2]["value"]);
+				objects.push_back(eg);
+			}
 	}
 
 	// add a HUD_HEIGHT to objects's heigth
@@ -356,7 +369,7 @@ void LoadResources()
 	// Add simon
 	simon = CSimon::GetInstance();
 	simon->SetPosition(30.0f, 143.0f + HUD_HEIGHT);
-	objects.push_back(simon);
+	
 
 	hud = CHUD::GetInstance();
 }
@@ -377,6 +390,8 @@ void Update(DWORD dt)
 
 	//objects.clear();
 	grid->Update(dt, &objects);
+
+	simon->Update(dt, &objects);
 
 	for (auto iter : objects)
 		iter->Update(dt, &objects);
