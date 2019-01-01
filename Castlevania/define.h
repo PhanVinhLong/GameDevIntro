@@ -10,11 +10,14 @@
 #define MAX_FRAME_RATE	120
 
 #define HUD_HEIGHT			40
+#define MAP_HEIGHT			176
+
+#define MAP_ROW				3
 
 #define GRID_WIDTH			(8*16)
 #define GRID_HEIGHT			(5*16 + 8)
 
-#define STOPWATCH_TIME		4000
+#define STOPWATCH_TIME		3000
 
 #define ID_SIMON			0
 #define ID_WHIP				1
@@ -113,6 +116,7 @@
 #define ID_ANI_WHIP_2_RIGHT				115
 #define ID_ANI_WHIP_2_LEFT				116
 
+#define ID_ANI_TORCH					200
 #define ID_ANI_LARGE_HEART				300
 #define ID_ANI_SMALL_HEART				302
 #define ID_ANI_CROSS_ITEM				304
@@ -186,4 +190,3 @@
 #define ID_ANI_PHANTOM_BAT_IDLE			511
 #define ID_ANI_PHANTOM_BAT_ACTIVE		512
 #define ID_ANI_PHANTOM_BAT_ON_FIRE		513
-

@@ -1,7 +1,7 @@
 #pragma once
 #include "Item.h"
 
-#define LARGE_HEART_GRAVITY			0.0005f
+#define LARGE_HEART_GRAVITY			0.0004f
 #define LARGE_HEART_BBOX_WIDTH		13
 #define LARGE_HEART_BBOX_HEIGHT		10
 

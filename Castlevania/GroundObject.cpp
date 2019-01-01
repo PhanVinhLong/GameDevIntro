@@ -86,5 +86,7 @@ void CGroundObject::BeDamaged()
 {
 	onFireStart = GetTickCount();
 	state = GROUND_OBJ_STATE_ON_FIRE;
-	y -= 6;
+
+	// set y postion to spawn item
+	y -= 10;
 }

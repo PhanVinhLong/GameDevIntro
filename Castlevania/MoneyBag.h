@@ -1,7 +1,7 @@
 #pragma once
 #include "Item.h"
 
-#define MONEY_BAG_GRAVITY				0.0005f
+#define MONEY_BAG_GRAVITY				0.0004f
 #define MONEY_BAG_BBOX_WIDTH			20
 #define MONEY_BAG_BBOX_HEIGHT			20
 

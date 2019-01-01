@@ -36,8 +36,3 @@ void CBullet::Render()
 		ani = 0;
 	animations[ani]->Render(x, y);
 }
-
-void CBullet::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
-{
-	CEnemy::Update(dt, objects);
-}

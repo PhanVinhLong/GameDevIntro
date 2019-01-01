@@ -27,6 +27,7 @@ void CHolyWater::GetBoundingBox(float & l, float & t, float & r, float & b)
 	t = y - HOLY_WATER_BBOX_HEIGHT;
 	r = x + HOLY_WATER_BBOX_WIDTH;
 	b = y;
+
 	if (isOnGround)
 	{
 		t = y - HOLY_WATER_BBOX_FIRED_HEIGHT;
@@ -42,7 +43,6 @@ void CHolyWater::Render()
 	else
 		ani = 2;
 
-	RenderBoundingBox(100);
 	animations[ani]->Render(x, y);
 }
 

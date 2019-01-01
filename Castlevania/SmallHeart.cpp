@@ -27,8 +27,8 @@ void CSmallHeart::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	if (!isOnGround)
 	{
 		vy += SMALL_HEART_GRAVITY;
-		delta += 2.5;
-		x = sin(delta * 3.14 / 180) * 15 + originX;
+		delta += SMALL_HEART_DELTA_X;
+		x = sin(delta) * SMALL_HEART_AMPLITUDE_X + originX;
 	}
 
 	CItem::Update(dt, coObjects);

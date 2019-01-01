@@ -30,11 +30,12 @@ private:
 	LPDIRECT3DTEXTURE9 texture;
 public:
 	CTileSet();
+	~CTileSet();
+
 	void LoadFromFile(LPCWSTR filePath);
 	void DrawTile(int id, D3DXVECTOR2 position, int alpha = 255);
 	int GetTileWidth();
 	int GetTileHeight();
-	~CTileSet();
 };
 
 typedef CTileSet* LPTILESET;

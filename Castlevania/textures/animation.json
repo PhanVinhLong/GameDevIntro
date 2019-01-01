@@ -1,6 +1,7 @@
 {
 	"texture":[
 		[-100, "textures\\bbox.png", 0],
+		[-20, "textures\\font.png", 4282999428],
 		[0, "textures\\simon.png", 4294902015],
 		[10, "textures\\enemy.png", 4284499050],
 		[30, "textures\\objects.png", 4294902015],

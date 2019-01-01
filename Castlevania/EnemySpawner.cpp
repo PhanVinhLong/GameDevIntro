@@ -10,21 +10,23 @@ void CEnemySpawner::SpawnEnemy(vector<LPGAMEOBJECT>* objects)
 	{
 	case ID_GHOUL:
 	{
-		float posX = playerNx > 0 ? vr -15 : vl + 5;
-		CGhoul* ghoul = new CGhoul({ posX, spawnHeight }, -playerNx, 20);
+		float posX = playerNx > 0 ? vr - GHOUL_BBOX_WIDTH + 5 : vl + 5; // +-5 to make sure enemy do not out of viewport
+		CGhoul* ghoul = new CGhoul({ posX, spawnHeight }, -playerNx, ID_ITEM_SMALL_HEART);
 		objects->push_back(ghoul);
 		break;
 	}
 	case ID_BAT:
 	{
-		float posX = playerNx > 0 ? vr - 15 : vl + 5;
-		CBat* bat = new CBat({ posX, spawnHeight - 40 }, -playerNx, 20);
+		float posX = playerNx > 0 ? vr - BAT_BBOX_WIDTH + 5 : vl + 5;
+		CBat* bat = new CBat({ posX, spawnHeight - 40 }, -playerNx, ID_ITEM_SMALL_HEART);
 		objects->push_back(bat);
 		break;
 	}
 	case ID_FISHMAN:
 	{
+		// get random nx for fishman
 		int enemyNx = GetTickCount() % 2 - 1 > 0 ? 1 : -1;
+
 		float playerX, playerY;
 		CSimon::GetInstance()->GetPosition(playerX, playerY);
 		float posX = playerX - enemyNx * 80;
@@ -114,4 +116,7 @@ void CEnemySpawner::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 				SpawnEnemy(objects);
 		}
 	}
+
+	if (stopWatchStart > 0 && GetTickCount() - stopWatchStart > STOPWATCH_TIME)
+		stopWatchStart = 0;
 }

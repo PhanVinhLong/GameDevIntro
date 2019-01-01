@@ -49,7 +49,7 @@ void CDoor::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 		}
 		else
 		{
-			simon->LockUpdate();
+			simon->LockControl();
 			viewport->LockUpdate();
 			viewport->MoveRight(dt);
 		}

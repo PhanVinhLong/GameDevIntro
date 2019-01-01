@@ -29,8 +29,3 @@ void CDagger::Render()
 	ani = nx > 0 ? 0 : 1;
 	animations[ani]->Render(x, y);
 }
-
-void CDagger::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
-{
-	CWeapon::Update(dt, coObjects);
-}

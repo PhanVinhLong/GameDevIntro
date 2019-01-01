@@ -18,7 +18,7 @@
 
 #define SIMON_WALKING_SPEED				0.06f
 #define SIMON_ON_STAIR_SPEED			0.037f
-#define SIMON_JUMP_SPEED_Y				0.2f
+#define SIMON_JUMP_SPEED_Y				0.21f
 #define SIMON_JUMP_DEFLECT_SPEED		0.1f
 #define SIMON_GRAVITY					0.0006f
 #define SIMON_DIE_DEFLECT_SPEED			0.5f
@@ -75,8 +75,8 @@
 #define SIMON_BBOX_SIT_HEIGHT		20
 
 #define SIMON_UNTOUCHABLE_TIME		4000
-#define SIMON_ATTACK_TIME			370
-#define SIMON_ATTACK_SUB_TIME		370
+#define SIMON_ATTACK_TIME			300
+#define SIMON_ATTACK_SUB_TIME		300
 #define SIMON_JUMP_TIME				650
 #define SIMON_INVISIBILITY_TIME		8000
 #define SIMON_FLASH_TIME			1000
@@ -121,6 +121,8 @@ class CSimon : public CGameObject
 
 	D3DXVECTOR2 checkPoint;
 public:
+	~CSimon();
+
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);
 	virtual void Render();
 	virtual void RenderBoundingBox(int alpha = 255);
@@ -167,7 +169,7 @@ public:
 	void StartInvisibility();
 	void StartCalculateScore();
 
-	void LockUpdate() { lockUpdate = true; }
+	void LockControl() { lockUpdate = true; }
 	void UnlockUpdate() { lockUpdate = false; }
 
 	void MoveRight(DWORD dt);

@@ -62,9 +62,9 @@ void CViewport::Update(D3DXVECTOR2 playerPos, int startPos, int endPos)
 		position.x = endPos - width;
 	if (position.x < startPos)
 		position.x = startPos;
-	position.y = int((playerPos.y - HUD_HEIGHT) / 176) * 176;
-	if (position.y > 176 * 2)
-		position.y = 176 * 2;
+	position.y = int((playerPos.y - HUD_HEIGHT) / MAP_HEIGHT) * MAP_HEIGHT;
+	if (position.y > MAP_HEIGHT * (MAP_ROW - 1))
+		position.y = MAP_HEIGHT * (MAP_ROW - 1);
 
 }
 

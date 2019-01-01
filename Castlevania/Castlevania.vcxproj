@@ -143,6 +143,7 @@
     <ClCompile Include="CrystalBall.cpp" />
     <ClCompile Include="EasterEgg.cpp" />
     <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="IntroScene.cpp" />
     <ClCompile Include="InvincibilityPotion.cpp" />
     <ClCompile Include="MoneyBag.cpp" />
     <ClCompile Include="MultiShootItem.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="PotRoast.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stair.cpp" />
     <ClCompile Include="GroundObject.cpp" />
     <ClCompile Include="HolyWater.cpp" />
@@ -203,6 +205,7 @@
     <ClInclude Include="CrystalBall.h" />
     <ClInclude Include="EasterEgg.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="IntroScene.h" />
     <ClInclude Include="InvincibilityPotion.h" />
     <ClInclude Include="MoneyBag.h" />
     <ClInclude Include="MultiShootItem.h" />
@@ -220,6 +223,7 @@
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="PotRoast.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Stair.h" />
     <ClInclude Include="GroundObject.h" />
     <ClInclude Include="HolyWater.h" />

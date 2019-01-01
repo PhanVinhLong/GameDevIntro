@@ -4,7 +4,6 @@ CText* CText::__instance;
 
 CText::CText()
 {
-	CTextures::GetInstance()->Add(ID_TEX_FONT, L"textures\\font.png", D3DCOLOR_XRGB(73, 98, 132));
 	this->texture = CTextures::GetInstance()->Get(ID_TEX_FONT);
 
 	charWidth = 8;

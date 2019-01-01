@@ -1,6 +1,5 @@
 #pragma once
 #include "Scene.h"
-
 #include <windows.h>
 #include <d3d9.h>
 #include <d3dx9.h>
@@ -34,19 +33,16 @@
 #include "PhantomBat.h"
 #include "Grid.h"
 
-using json = nlohmann::json;
-
 class CPlayScene :
 	public CScene
 {
 	LPGAME game;
-
-	CSimon* simon;
-
 	LPVIEWPORT viewport;
 	LPTILEMAP tileMap;
 	LPHUD hud;
 	LPGRID grid;
+
+	CSimon* simon;
 
 	vector<LPGAMEOBJECT> objects;
 
@@ -54,6 +50,12 @@ public:
 	CPlayScene();
 	~CPlayScene();
 
+	void LoadResource();
+	void Update(DWORD dt);
+	void Render();
 
+	void OnKeyDown(int KeyCode);
+	void OnkeyUp(int KeyCode);
+	void KeyState(BYTE* states);
 };
 

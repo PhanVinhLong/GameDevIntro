@@ -49,7 +49,7 @@ void CItem::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
 
 		// block 
-		y += min_ty * dy + ny * 0.1f;
+		y += min_ty * dy + ny * 0.4f;
 
 		if (ny != 0)
 		{

@@ -43,7 +43,7 @@
                         {
                          "name":"reward",
                          "type":"int",
-                         "value":28
+                         "value":22
                         }],
                  "rotation":0,
                  "type":"torch",
@@ -1595,7 +1595,7 @@
                         {
                          "name":"reward",
                          "type":"int",
-                         "value":20
+                         "value":61
                         }],
                  "rotation":0,
                  "type":"candle",
@@ -1918,7 +1918,7 @@
                  "visible":true,
                  "width":20,
                  "x":34,
-                 "y":114
+                 "y":115
                 }, 
                 {
                  "height":30,
@@ -2157,8 +2157,8 @@
                  "rotation":0,
                  "type":"wall",
                  "visible":true,
-                 "width":33,
-                 "x":1854,
+                 "width":32,
+                 "x":1855,
                  "y":257
                 }, 
                 {
@@ -2261,7 +2261,7 @@
                  "y":351
                 }, 
                 {
-                 "height":177,
+                 "height":115,
                  "id":69,
                  "name":"22",
                  "rotation":0,
@@ -2300,7 +2300,7 @@
                  "rotation":0,
                  "type":"wall",
                  "visible":true,
-                 "width":30,
+                 "width":31,
                  "x":2033,
                  "y":466
                 }, 
@@ -2361,7 +2361,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -2383,8 +2383,8 @@
                  "rotation":0,
                  "type":"brick",
                  "visible":true,
-                 "width":16,
-                 "x":1007,
+                 "width":15,
+                 "x":1008,
                  "y":274
                 }, 
                 {
@@ -2563,7 +2563,7 @@
                  "visible":true,
                  "width":33,
                  "x":32,
-                 "y":128
+                 "y":127
                 }, 
                 {
                  "height":18,

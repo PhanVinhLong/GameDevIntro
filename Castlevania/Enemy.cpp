@@ -46,8 +46,8 @@ void CEnemy::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
 
-		x += min_tx * dx + nx * 0.1f;		// nx*0.1f : need to push out a bit to avoid overlapping next frame
-		y += min_ty * dy + ny * 0.1f;
+		x += min_tx * dx + nx * 0.11f;		// nx*0.1f : need to push out a bit to avoid overlapping next frame
+		y += min_ty * dy + ny * 0.10f;
 
 		if (ny < 0)
 		{

@@ -4,7 +4,7 @@ CTorch::CTorch(D3DXVECTOR2 position, int nextItemId)
 {
 	x = position.x;
 	y = position.y;
-	AddAnimation(200);
+	AddAnimation(ID_ANI_TORCH);
 	id = ID_TORCH;
 	this->nextItemId = nextItemId;
 }

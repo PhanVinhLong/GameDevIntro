@@ -1,10 +1,25 @@
 #include "TileMap.h"
 #include "define.h"
 
-std::wstring s2ws(const std::string& s);
-
 CTileSet::CTileSet()
 {
+}
+
+CTileSet::~CTileSet()
+{
+	listTile.clear();
+}
+
+std::wstring s2ws2(const std::string& s)
+{
+	int len;
+	int slength = (int)s.length() + 1;
+	len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0);
+	wchar_t* buf = new wchar_t[len];
+	MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, buf, len);
+	std::wstring r(buf);
+	delete[] buf;
+	return r;
 }
 
 void CTileSet::LoadFromFile(LPCWSTR filePath)
@@ -22,7 +37,7 @@ void CTileSet::LoadFromFile(LPCWSTR filePath)
 	numOfRow = (tileCount - 1) / numOfColumn + 1;
 		
 	wstring sTmp;
-	sTmp = s2ws(tmpPath);
+	sTmp = s2ws2(tmpPath);
 	LPCWSTR imagePath = sTmp.c_str();
 	
 	/*int tileWidth = 16;
@@ -64,20 +79,6 @@ int CTileSet::GetTileHeight()
 	return tileHeight;
 }
 
-// https://stackoverflow.com/questions/27220/how-to-convert-stdstring-to-lpcwstr-in-c-unicode
-// covert std::string to std:: wstring
-std::wstring s2ws(const std::string& s)
-{
-    int len;
-    int slength = (int)s.length() + 1;
-    len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0); 
-    wchar_t* buf = new wchar_t[len];
-    MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, buf, len);
-    std::wstring r(buf);
-    delete[] buf;
-    return r;
-}
-
 DWORD CTileMap::effectStart;
 
 CTileMap::CTileMap()
@@ -85,14 +86,16 @@ CTileMap::CTileMap()
 	
 	tileSet = new CTileSet();
 	wStart = 0;
-	wEnd = 48*16;
+	wEnd = 100;
 
 	effectStart = 0;
 }
 
 CTileMap::~CTileMap()
 {
-
+	for (int i = 0; i < tileRow; i++)
+		delete[] mapData[i];
+	delete mapData;
 }
 
 void CTileMap::LoadFromFile(LPCWSTR filePath)

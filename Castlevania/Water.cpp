@@ -1,7 +1,5 @@
 #include "Water.h"
 
-
-
 CWater::CWater()
 {
 }

@@ -48,6 +48,8 @@ void CBoomerang::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 	{
 		float sl, st, sr, sb, l, t, r, b;
 		GetBoundingBox(l, t, r, b);
+
+		// delete when out of viewport
 		CSimon::GetInstance()->GetBoundingBox(sl, st, sr, sb);
 		if (CGame::IsIntersect({ (long)sl, (long)st, (long)sr, (long)sb },
 			{ (long)l, (long)t, (long)r, (long)b }))

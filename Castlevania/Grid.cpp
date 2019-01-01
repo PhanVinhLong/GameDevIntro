@@ -11,6 +11,22 @@ CGrid::CGrid(int column, int row)
 
 CGrid::~CGrid()
 {
+	// delete groundObjects
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < column; j++)
+		{
+			for (auto iter : groundObjects[i][j])
+				delete iter;
+			groundObjects[i][j].clear();
+		}
+		delete[] groundObjects[i];
+	}
+
+	// delete moveObjects
+	for (auto iter : moveObjects)
+		delete iter;
+	moveObjects.clear();
 }
 
 void CGrid::InsertObject(LPGAMEOBJECT object)
@@ -19,16 +35,16 @@ void CGrid::InsertObject(LPGAMEOBJECT object)
 
 	object->GetBoundingBox(ol, ot, or , ob);
 
-	for(int i = 0; i < column; i++)
-		for (int j = 0; j < row; j++)
+	for(int i = 0; i < row; i++)
+		for (int j = 0; j < column; j++)
 		{
-			gl = i * GRID_WIDTH;
-			gr = (i + 1) * GRID_WIDTH;
-			gt = j * GRID_HEIGHT + HUD_HEIGHT;
-			gb = (j + 1) * GRID_HEIGHT + HUD_HEIGHT;
+			gl = j * GRID_WIDTH;
+			gr = (j + 1) * GRID_WIDTH;
+			gt = i * GRID_HEIGHT + HUD_HEIGHT;
+			gb = (i + 1) * GRID_HEIGHT + HUD_HEIGHT;
 			if (CGame::IsIntersect({ (long)ol, (long)ot, (long)or , (long)ob },
 				{ (long)gl, (long)gt, (long)gr, (long)gb }))
-				groundObjects[j][i].insert(object);
+				groundObjects[i][j].insert(object);
 		}
 }
 
@@ -54,9 +70,9 @@ void CGrid::GetObjects(vector<LPGAMEOBJECT>* objects)
 
 	// Add to set to avoid duplication
 	set<LPGAMEOBJECT> tmpObjects;
-	for (int i = wMin; i < wMax; i++)
-		for (int j = hMin; j < hMax; j++)
-			for (auto iter : groundObjects[j][i])
+	for (int i = hMin; i < hMax; i++)
+		for (int j = wMin; j < wMax; j++)
+			for (auto iter : groundObjects[i][j])
 				if (iter->GetState() != STATE_DESTROYED)
 					tmpObjects.insert(iter);
 
@@ -96,7 +112,5 @@ void CGrid::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 	// Add move objects
 	for (auto iter : moveObjects)
 		objects->push_back(iter);
-
-	
 }
 

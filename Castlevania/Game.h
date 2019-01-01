@@ -22,6 +22,8 @@ typedef CKeyEventHandler * LPKEYEVENTHANDLER;
 
 class CGame
 {
+	CGame();
+
 	static CGame * __instance;
 	HWND hWnd;									// Window handle
 

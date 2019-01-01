@@ -8,17 +8,17 @@ CPanther::CPanther(D3DXVECTOR2 position, int nx, int nextItemId)
 	this->nextItemId = nextItemId;
 	id = ID_PANTHER;
 
+	state = ENEMY_STATE_IDLE;
+	score = 200;
+	isOnGround = true;
+	currentFloor = NULL;
+
 	AddAnimation(ID_ANI_PANTHER_IDLE_RIGHT);
 	AddAnimation(ID_ANI_PANTHER_IDLE_LEFT);
 	AddAnimation(ID_ANI_PANTHER_RUN_RIGHT);
 	AddAnimation(ID_ANI_PANTHER_RUN_LEFT);
 	AddAnimation(ID_ANI_PANTHER_JUMP_RIGHT);
 	AddAnimation(ID_ANI_PANTHER_JUMP_LEFT);
-
-	state = ENEMY_STATE_IDLE;
-	score = 200;
-	isOnGround = true;
-	currentFloor = NULL;
 }
 
 CPanther::~CPanther()

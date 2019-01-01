@@ -52,15 +52,14 @@ void CPhantomBat::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		GetPosition(px, py);
 		if (sx - px > 70)
 		{
-			if (int((sy - HUD_HEIGHT) / 176) == int((py - HUD_HEIGHT) / 176))
-			{
-				state = PHANTOM_BAT_STATE_ACTIVE;
-				startBack = GetTickCount();
-				int desX = rand() % 180 + 2600;
-				int desY = rand() % 90 + 190 + HUD_HEIGHT;
-				vx = (desX - x) / PHANTOM_BAT_BACK_TIME;
-				vy = (desY - y) / PHANTOM_BAT_BACK_TIME;
-			}
+			state = PHANTOM_BAT_STATE_ACTIVE;
+			startBack = GetTickCount();
+			int desX = rand() % (PHANTOM_BAT_X_END - PHANTOM_BAT_X_START) + PHANTOM_BAT_X_START;
+			int desY = rand() % (PHANTOM_BAT_Y_END - PHANTOM_BAT_Y_START) + PHANTOM_BAT_Y_START + HUD_HEIGHT;
+
+			// calculate velocity
+			vx = (desX - x) / PHANTOM_BAT_BACK_TIME;
+			vy = (desY - y) / PHANTOM_BAT_BACK_TIME;
 		}
 	}
 

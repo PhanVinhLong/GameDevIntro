@@ -1,7 +1,4 @@
 #pragma once
-#include <Windows.h>
-#include <d3dx9.h>
-#include <d3d9.h>
 #include "debug.h"
 #include "Game.h"
 #include "Textures.h"
@@ -25,14 +22,15 @@ class CHUD
 
 	CHUD();
 	void DrawHealth(int id, D3DXVECTOR2 position);
+
+	LPSPRITE GetItemSprite();
+	LPSPRITE GetMultiShootSprite();
+
 public:
 	~CHUD();
 
 	void Draw(D3DXVECTOR2 position);
 	static CHUD* GetInstance();
-
-	LPSPRITE GetItemSprite();
-	LPSPRITE GetMultiShootSprite();
 
 	void SetEnemyHealth(int health);
 };

@@ -30,7 +30,5 @@ void CEffect::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 void CEffect::Render()
 {
 	for (int i = 0; i < num; i++)
-	{
 		animations[0]->Render(x[i], y[i]);
-	}
 }
