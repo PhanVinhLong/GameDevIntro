@@ -11,6 +11,7 @@
 
 #define HUD_HEIGHT			40
 #define MAP_HEIGHT			176
+#define TILE_WIDTH			16
 
 #define MAP_ROW				3
 
@@ -193,3 +194,6 @@
 #define ID_ANI_PHANTOM_BAT_IDLE			511
 #define ID_ANI_PHANTOM_BAT_ACTIVE		512
 #define ID_ANI_PHANTOM_BAT_ON_FIRE		513
+
+#define ID_ANI_INTRO_BG					600
+#define ID_ANI_INTRO_ANI				601

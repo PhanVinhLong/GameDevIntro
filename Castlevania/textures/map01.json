@@ -1952,17 +1952,6 @@
                  "width":20,
                  "x":2085,
                  "y":210
-                }, 
-                {
-                 "height":30,
-                 "id":212,
-                 "name":"cp-04",
-                 "rotation":0,
-                 "type":"checkpoint",
-                 "visible":true,
-                 "width":20,
-                 "x":2609.66666666667,
-                 "y":289
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2729,6 +2718,28 @@
                  "width":33,
                  "x":1915,
                  "y":351
+                }, 
+                {
+                 "height":18,
+                 "id":213,
+                 "name":"mapset-09",
+                 "properties":[
+                        {
+                         "name":"wbegin",
+                         "type":"int",
+                         "value":161
+                        }, 
+                        {
+                         "name":"wend",
+                         "type":"int",
+                         "value":177
+                        }],
+                 "rotation":0,
+                 "type":"mapset",
+                 "visible":true,
+                 "width":33,
+                 "x":2734,
+                 "y":287
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2792,7 +2803,7 @@
          "y":0
         }],
  "nextlayerid":18,
- "nextobjectid":213,
+ "nextobjectid":214,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.0",

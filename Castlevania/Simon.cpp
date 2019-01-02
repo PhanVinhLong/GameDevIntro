@@ -76,6 +76,9 @@ CSimon::~CSimon()
 	for (auto iter : subWeapon)
 		delete iter;
 	subWeapon.clear();
+
+	delete __instance;
+	__instance = NULL;
 }
 
 void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -113,7 +116,8 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 		else
 		{
-			//CSceneManager::GetInstance()->ChangeScene(ID_SCENE_INTRO);
+			//move to next scene
+			calculateStart = 0;
 		}
 	}
 
@@ -253,6 +257,10 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			lyingStart = GetTickCount();
 		}
 	}
+
+	// check if simon out of map
+	if (x < wMapStart * TILE_WIDTH && nx < 0)
+		x = wMapStart * TILE_WIDTH;
 }
 
 void CSimon::Render()

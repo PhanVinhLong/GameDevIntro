@@ -15,6 +15,7 @@
 #include "WaterEffect.h"
 #include "Boomerang.h"
 #include "EasterEgg.h"
+#include "Scene.h"
 
 #define SIMON_WALKING_SPEED				0.06f
 #define SIMON_ON_STAIR_SPEED			0.037f

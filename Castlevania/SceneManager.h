@@ -20,5 +20,9 @@ public:
 	CScene* GetCurrentScene();
 	static CSceneManager* GetInstance();
 	void ChangeScene(int sceneId);
+
+	void LoadResource();
+	void Update(DWORD dt);
+	void Render();
 };
 

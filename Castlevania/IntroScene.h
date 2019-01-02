@@ -7,7 +7,7 @@
 #include "Textures.h"
 #include "json.hpp"
 
-#define ID_TEX_TITLE		0
+#define ID_TEX_TITLE		70
 
 using json = nlohmann::json;
 

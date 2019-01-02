@@ -48,6 +48,10 @@ using json = nlohmann::json;
 LPGAME game;
 CSceneManager* sceneManager;
 
+LPDIRECT3DDEVICE9 d3ddv;
+LPDIRECT3DSURFACE9 bb;
+LPD3DXSPRITE spriteHandler;
+
 class CSampleKeyHander : public CKeyEventHandler
 {
 	virtual void KeyState(BYTE *states);
@@ -87,7 +91,12 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 void LoadResources()
 {
+	d3ddv = game->GetDirect3DDevice();
+	bb = game->GetBackBuffer();
+	spriteHandler = game->GetSpriteHandler();
+
 	sceneManager = CSceneManager::GetInstance();
+	sceneManager->LoadResource();
 	sceneManager->ChangeScene(ID_SCENE_INTRO);
 }
 
@@ -97,7 +106,7 @@ void LoadResources()
 */
 void Update(DWORD dt)
 {
-	sceneManager->GetCurrentScene()->Update(dt);
+	sceneManager->Update(dt);
 }
 
 /*
@@ -105,10 +114,6 @@ void Update(DWORD dt)
 */
 void Render()
 {
-	LPDIRECT3DDEVICE9 d3ddv = game->GetDirect3DDevice();
-	LPDIRECT3DSURFACE9 bb = game->GetBackBuffer();
-	LPD3DXSPRITE spriteHandler = game->GetSpriteHandler();
-
 	if (d3ddv->BeginScene())
 	{
 		// Clear back buffer with a color
@@ -116,7 +121,7 @@ void Render()
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
-		sceneManager->GetCurrentScene()->Render();
+		sceneManager->Render();
 
 		spriteHandler->End();
 		d3ddv->EndScene();

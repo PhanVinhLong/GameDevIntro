@@ -10,6 +10,7 @@ class CScene
 {
 protected:
 	int id;
+	static int currentSceneId;
 public:
 	CScene();
 	~CScene();
@@ -21,5 +22,10 @@ public:
 	virtual void OnKeyDown(int keyCode);
 	virtual void OnKeyUp(int keyCode);
 	virtual void KeyState(BYTE* states);
+
+	int GetId();
+
+	static int GetCurrentSceneId();
+	static void SetCurrentSceneId(int id);
 };
 
