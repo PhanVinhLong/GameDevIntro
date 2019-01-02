@@ -1,7 +1,7 @@
 #pragma once
-#include "GameObject.h"
+#include "TransparentObject.h"
 class CWall :
-	public CGameObject
+	public CTransparentObject
 {
 	int width;
 	int height;
@@ -10,6 +10,5 @@ public:
 	CWall(D3DXVECTOR2 position, int width, int height);
 	~CWall();
 
-	virtual void Render();
 	virtual void GetBoundingBox(float &l, float &t, float &r, float &b);
 };

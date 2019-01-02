@@ -2,6 +2,7 @@
 
 CIntroScene::CIntroScene()
 {
+	id = ID_SCENE_INTRO;
 	LoadResource();
 }
 
@@ -33,8 +34,8 @@ void CIntroScene::LoadResource()
 	sprites->Add(11, 275, 125, 347, 181, 0, 0, { 0, 0 });
 	sprites->Add(12, 353, 125, 425, 181, 0, 0, { 0, 0 });
 	sprites->Add(13, 431, 125, 503, 181, 0, 0, { 0, 0 });
-	sprites->Add(14, 511, 125, 581, 181, 0, 0, { 0, 0 });
-	sprites->Add(15, 589, 125, 659, 181, 0, 0, { 0, 0 });
+	sprites->Add(14, 511, 125, 583, 181, 0, 0, { 0, 0 });
+	sprites->Add(15, 589, 125, 661, 181, 0, 0, { 0, 0 });
 
 	ani = new CAnimation(100);
 	for (int i = 12; i <= 15; i++) ani->Add(i);

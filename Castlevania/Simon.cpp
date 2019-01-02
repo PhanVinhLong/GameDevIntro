@@ -43,7 +43,7 @@ CSimon::CSimon()
 	heart = 5;
 	health = SIMON_MAX_HEALTH;
 
-	time = 300;
+	time = DEFAULT_STATE_TIME;
 
 	isOnGround = false;
 	isOnStair = false;
@@ -137,7 +137,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	coEvents.clear();
 
 	// turn off collision
-	if (state != SIMON_STATE_UP_STAIR && state != SIMON_STATE_DOWN_STAIR && state != SIMON_STATE_DIE)
+	if (state != SIMON_STATE_UP_STAIR && state != SIMON_STATE_DOWN_STAIR)
 		CalcPotentialCollisions(&wallObjects, coEvents);
 
 	// No collision occured, proceed normally
@@ -249,7 +249,6 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			health = 0;
 			state = SIMON_STATE_DIE;
 			isOnStair = false;
-			vx = 0;
 			LockControl();
 			lyingStart = GetTickCount();
 		}

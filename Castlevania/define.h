@@ -18,6 +18,7 @@
 #define GRID_HEIGHT			(5*16 + 8)
 
 #define STOPWATCH_TIME		3000
+#define DEFAULT_STATE_TIME	300
 
 #define ID_SIMON			0
 #define ID_WHIP				1
@@ -117,7 +118,9 @@
 #define ID_ANI_WHIP_2_LEFT				116
 
 #define ID_ANI_TORCH					200
+#define ID_ANI_CANDLE					201
 #define ID_ANI_LARGE_HEART				300
+#define ID_ANI_WHIP_UPGRADE				301
 #define ID_ANI_SMALL_HEART				302
 #define ID_ANI_CROSS_ITEM				304
 #define ID_ANI_STOPWATCH_ITEM			305

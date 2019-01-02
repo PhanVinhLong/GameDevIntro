@@ -1,7 +1,7 @@
 #pragma once
-#include "GroundObject.h"
+#include "TransparentObject.h"
 class CStair :
-	public CGroundObject
+	public CTransparentObject
 {
 	int bbWidth;
 	int bbHeight;
@@ -11,7 +11,6 @@ public:
 	~CStair();
 
 	virtual void GetBoundingBox(float &l, float &t, float &r, float &b);
-	virtual void Render();
 
 	int GetStairHeight() { return height; }
 

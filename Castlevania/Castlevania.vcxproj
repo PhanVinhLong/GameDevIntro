@@ -141,6 +141,7 @@
     <ClCompile Include="Candle.cpp" />
     <ClCompile Include="CheckPoint.cpp" />
     <ClCompile Include="CrystalBall.cpp" />
+    <ClCompile Include="TransparentObject.cpp" />
     <ClCompile Include="EasterEgg.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="IntroScene.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="Candle.h" />
     <ClInclude Include="CheckPoint.h" />
     <ClInclude Include="CrystalBall.h" />
+    <ClInclude Include="TransparentObject.h" />
     <ClInclude Include="EasterEgg.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="IntroScene.h" />

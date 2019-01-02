@@ -61,10 +61,6 @@ CEnemySpawner::~CEnemySpawner()
 {
 }
 
-void CEnemySpawner::Render()
-{
-}
-
 void CEnemySpawner::GetBoundingBox(float & left, float & top, float & right, float & bottom)
 {
 	left = x;

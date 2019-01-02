@@ -55,7 +55,7 @@ public:
 	void Render();
 
 	void OnKeyDown(int KeyCode);
-	void OnkeyUp(int KeyCode);
+	void OnKeyUp(int KeyCode);
 	void KeyState(BYTE* states);
 };
 

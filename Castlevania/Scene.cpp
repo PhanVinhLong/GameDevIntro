@@ -12,7 +12,7 @@ void CScene::OnKeyDown(int keyCode)
 {
 }
 
-void CScene::OnkeyUp(int keyCode)
+void CScene::OnKeyUp(int keyCode)
 {
 }
 

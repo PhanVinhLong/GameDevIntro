@@ -1,6 +1,6 @@
 #pragma once
 #include <ctime>
-#include "GameObject.h"
+#include "TransparentObject.h"
 #include "Viewport.h"
 #include "Simon.h"
 #include "Ghoul.h"
@@ -10,7 +10,7 @@
 #define SPAWNER_DELAY_TIME		800
 
 class CEnemySpawner :
-	public CGameObject
+	public CTransparentObject
 {
 	int width;
 	int height;
@@ -31,7 +31,6 @@ public:
 	~CEnemySpawner();
 
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* objects);
-	virtual void Render();
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 };
 

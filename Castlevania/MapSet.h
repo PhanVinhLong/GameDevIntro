@@ -1,11 +1,11 @@
 #pragma once
-#include "GameObject.h"
+#include "TransparentObject.h"
 
 #define MAPSET_BBOX_WIDTH	30
 #define MAPSET_BBOX_HEIGHT	18
 
 class CMapSet :
-	public CGameObject
+	public CTransparentObject
 {
 	int wBegin;
 	int wEnd;
@@ -14,7 +14,6 @@ public:
 	~CMapSet();
 
 	virtual void GetBoundingBox(float &l, float &t, float &r, float &b);
-	virtual void Render();
 
 	int GetWidthBegin() { return wBegin; }
 	int GetWidthEnd() { return wEnd; }

@@ -20,7 +20,3 @@ void CMapSet::GetBoundingBox(float & l, float & t, float & r, float & b)
 	r = x + MAPSET_BBOX_WIDTH;
 	b = y;
 }
-
-void CMapSet::Render()
-{
-}

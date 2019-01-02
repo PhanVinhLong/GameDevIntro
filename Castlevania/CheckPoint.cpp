@@ -18,7 +18,3 @@ void CCheckPoint::GetBoundingBox(float & l, float & t, float & r, float & b)
 	r = x + CHECKPOINT_BBOX_WIDTH;
 	b = y;
 }
-
-void CCheckPoint::Render()
-{
-}

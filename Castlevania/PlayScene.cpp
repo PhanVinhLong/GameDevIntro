@@ -2,6 +2,7 @@
 
 CPlayScene::CPlayScene()
 {
+	id = ID_SCENE_PLAY;
 	LoadResource();
 }
 
@@ -258,7 +259,7 @@ void CPlayScene::OnKeyDown(int KeyCode)
 	}
 }
 
-void CPlayScene::OnkeyUp(int KeyCode)
+void CPlayScene::OnKeyUp(int KeyCode)
 {
 	DebugOut(L"[INFO] KeyUp: %d\n", KeyCode);
 	switch (KeyCode)

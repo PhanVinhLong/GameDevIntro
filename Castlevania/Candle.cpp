@@ -4,7 +4,7 @@ CCandle::CCandle(D3DXVECTOR2 position, int nextItemId)
 {
 	x = position.x;
 	y = position.y;
-	AddAnimation(201);
+	AddAnimation(ID_ANI_CANDLE);
 	id = ID_CANDLE;
 	this->nextItemId = nextItemId;
 }

@@ -25,10 +25,6 @@ CWall::~CWall()
 {
 }
 
-void CWall::Render()
-{
-}
-
 void CWall::GetBoundingBox(float & l, float & t, float & r, float & b)
 {
 	l = x;

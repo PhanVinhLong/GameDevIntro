@@ -8,11 +8,44 @@
 ||																	||
 ||================================================================= */
 
-#include "SceneManager.h";
-#include "IntroScene.h"
-#include "PlayScene.h"
+#include <windows.h>
+#include <d3d9.h>
+#include <d3dx9.h>
 
-LPGAME game = CGame::GetInstance();
+#include "define.h"
+#include "debug.h"
+#include "Game.h"
+#include "GameObject.h"
+#include "Textures.h"
+#include "json.hpp"
+
+#include "Simon.h"
+#include "Torch.h"
+#include "LargeHeart.h"
+#include "Wall.h"
+#include "Portal.h"
+#include "Stair.h"
+#include "EnemySpawner.h"
+#include "Water.h"
+#include "Door.h"
+#include "CheckPoint.h"
+#include "Brick.h"
+
+#include "TileMap.h"
+#include "Viewport.h"
+#include "HUD.h"
+#include "Text.h"
+#include "Candle.h"
+#include "Panther.h"
+#include "MapSet.h"
+#include "PhantomBat.h"
+#include "Grid.h"
+
+#include "SceneManager.h"
+
+using json = nlohmann::json;
+
+LPGAME game;
 CSceneManager* sceneManager;
 
 class CSampleKeyHander : public CKeyEventHandler
@@ -31,7 +64,7 @@ void CSampleKeyHander::OnKeyDown(int KeyCode)
 
 void CSampleKeyHander::OnKeyUp(int KeyCode)
 {
-	sceneManager->GetCurrentScene()->OnkeyUp(KeyCode);
+	sceneManager->GetCurrentScene()->OnKeyUp(KeyCode);
 }
 
 void CSampleKeyHander::KeyState(BYTE *states)
@@ -76,17 +109,18 @@ void Render()
 	LPDIRECT3DSURFACE9 bb = game->GetBackBuffer();
 	LPD3DXSPRITE spriteHandler = game->GetSpriteHandler();
 
-	d3ddv->BeginScene();
-	d3ddv->ColorFill(bb, NULL, BACKGROUND_COLOR);
+	if (d3ddv->BeginScene())
+	{
+		// Clear back buffer with a color
+		d3ddv->ColorFill(bb, NULL, BACKGROUND_COLOR);
 
-	spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-	// Draw here
+		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
-	sceneManager->GetCurrentScene()->Render();
+		sceneManager->GetCurrentScene()->Render();
 
-	// End draw
-	spriteHandler->End();
-	d3ddv->EndScene();
+		spriteHandler->End();
+		d3ddv->EndScene();
+	}
 
 	// Display back buffer content to the screen
 	d3ddv->Present(NULL, NULL, NULL, NULL);
@@ -187,6 +221,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	keyHandler = new CSampleKeyHander();
 	game->InitKeyboard(keyHandler);
+
 
 	LoadResources();
 

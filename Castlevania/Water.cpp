@@ -18,10 +18,6 @@ CWater::~CWater()
 {
 }
 
-void CWater::Render()
-{
-}
-
 void CWater::GetBoundingBox(float & l, float & t, float & r, float & b)
 {
 	l = x;
