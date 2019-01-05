@@ -1,4 +1,4 @@
-# [Introductio To Game Application](https://github.com/PhanVinhLong/GameDevIntro)
+# [Introduction To Game Application](https://github.com/PhanVinhLong/GameDevIntro)
 - [Thông tin](#thông-tin)
 - [Thành viên](#thành-viên)
 - [Công cụ lập trình](#môi-trường-phát-triển)
@@ -11,7 +11,7 @@
 ## Thành viên
 | STT | MSSV | Thành viên | Mã lớp |
 |-----|------|--------------|--------|
-|1|16520695|Phan Vĩnh Long|SE114.J12.PMCL|
+|1|16520695|Phan Vĩnh Long|SE102.J13.PMCL|
 
 ---
 ## Môi trường phát triển
