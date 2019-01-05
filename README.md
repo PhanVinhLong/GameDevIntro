@@ -1,4 +1,4 @@
-# [Introduction To Game Application](https://github.com/PhanVinhLong/GameDevIntro)
+# [Introduction To Game Development](https://github.com/PhanVinhLong/GameDevIntro)
 - [Thông tin](#thông-tin)
 - [Thành viên](#thành-viên)
 - [Công cụ lập trình](#môi-trường-phát-triển)
@@ -16,8 +16,10 @@
 ---
 ## Môi trường phát triển
 - Ngôn ngữ: C++
-- Công cụ: Microsoft Visual Studio Community 2017
+- Microsoft Visual Studio Community 2017
+- Tiled Map
+- Sublime Text 3
 
 ---
 ## Công nghệ
-- DirectX 9 SDK
+- Microsoft DirectX 9 SDK
