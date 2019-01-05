@@ -60,8 +60,9 @@ void CPanther::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 	{
 		float min_tx, min_ty, nx = 0, ny;
 		int idx, idy;
+		LPGAMEOBJECT objectx = NULL, objecty = NULL;
 
-		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, objectx, objecty);
 
 		y += min_ty * dy + ny * 0.1f;
 
@@ -173,7 +174,7 @@ void CPanther::Render()
 			ani = PANTHER_ANI_IDLE_LEFT;
 		break;
 	case ENEMY_STATE_ACTIVE:
-		if (nx > 0)
+		if (nx < 0)
 			ani = PANTHER_ANI_RUN_RIGHT;
 		else
 			ani = PANTHER_ANI_RUN_LEFT;

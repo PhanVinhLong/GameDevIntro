@@ -131,7 +131,7 @@ void CPlayScene::LoadResource()
 
 	// Add simon
 	simon = CSimon::GetInstance();
-	simon->SetPosition(30.0f, 143.0f + HUD_HEIGHT);
+	simon->SetPosition(30.0f, 183.0f);
 
 	hud = CHUD::GetInstance();
 }
@@ -171,6 +171,7 @@ void CPlayScene::Render()
 		objects[i]->RenderBoundingBox(100);
 		objects[i]->Render();
 	}
+	simon->RenderBoundingBox(100);
 	simon->Render();
 	hud->Draw({ 0, 0 });
 }
@@ -184,6 +185,7 @@ void CPlayScene::OnKeyDown(int KeyCode)
 		return;
 	switch (KeyCode)
 	{
+	case DIK_S:
 	case DIK_Z:
 		if (!simon->IsOnStair()
 			&& simon->GetState() != SIMON_STATE_JUMP
@@ -191,6 +193,7 @@ void CPlayScene::OnKeyDown(int KeyCode)
 			&& simon->GetState() != SIMON_STATE_ATTACK_SUBWEAPON)
 			simon->StartJump();
 		break;
+	case DIK_A:
 	case DIK_X:
 		if (game->IsKeyDown(DIK_UP))
 			simon->StartAttackSub(&objects);
@@ -200,16 +203,16 @@ void CPlayScene::OnKeyDown(int KeyCode)
 	case DIK_C:
 		simon->StartAttackSub(&objects);
 		break;
-	case DIK_A:
+	/*case DIK_A:
 		simon->SetState(SIMON_STATE_IDLE);
 		simon->SetPosition(40.0f, 375.0f);
 		simon->SetSpeed(0, 0);
-		break;
-	case DIK_S:
+		break;*/
+	/*case DIK_S:
 		simon->SetState(SIMON_STATE_IDLE);
 		simon->SetPosition(1433.0f, 280.0f);
 		simon->SetSpeed(0, 0);
-		break;
+		break;*/
 	case DIK_D:
 		simon->SetState(SIMON_STATE_IDLE);
 		simon->SetPosition(1905.0f, 375.0f);

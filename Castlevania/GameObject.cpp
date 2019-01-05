@@ -93,7 +93,8 @@ void CGameObject::FilterCollision(
 	vector<LPCOLLISIONEVENT> &coEvents,
 	vector<LPCOLLISIONEVENT> &coEventsResult,
 	float &min_tx, float &min_ty,
-	float &nx, float &ny)
+	float &nx, float &ny,
+	LPGAMEOBJECT &objx, LPGAMEOBJECT &objy)
 {
 	min_tx = 1.0f;
 	min_ty = 1.0f;
@@ -110,11 +111,11 @@ void CGameObject::FilterCollision(
 		LPCOLLISIONEVENT c = coEvents[i];
 
 		if (c->t < min_tx && c->nx != 0) {
-			min_tx = c->t; nx = c->nx; min_ix = i;
+			min_tx = c->t; nx = c->nx; min_ix = i; objx = c->obj;
 		}
 
 		if (c->t < min_ty && c->ny != 0) {
-			min_ty = c->t; ny = c->ny; min_iy = i;
+			min_ty = c->t; ny = c->ny; min_iy = i; objy = c->obj;
 		}
 	}
 
@@ -139,7 +140,7 @@ void CGameObject::RenderBoundingBox(int alpha)
 	rect.bottom = (int)b - (int)t;
 
 	D3DXVECTOR2 viewportPos = CViewport::GetInstance()->WorldToViewportPos({ l, t });
-	CGame::GetInstance()->Draw(viewportPos.x, viewportPos.y, bbox, rect.left, rect.top, rect.right, rect.bottom, alpha);
+	CGame::GetInstance()->Draw(viewportPos.x, viewportPos.y, bbox, rect.left, rect.top, rect.right, rect.bottom, 0);
 }
 
 void CGameObject::AddAnimation(int aniId)
@@ -162,6 +163,10 @@ void CGameObject::BeDamaged()
 void CGameObject::StartStopWatch()
 {
 	stopWatchStart = GetTickCount();
+}
+
+void CGameObject::Reset()
+{
 }
 
 int CGameObject::GetNx()

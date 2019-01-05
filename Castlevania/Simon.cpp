@@ -38,7 +38,7 @@ CSimon::CSimon()
 
 	whip = new CWhip();
 
-	life = SIMON_MAX_HEALTH;
+	life = 3;
 	score = 0;
 	heart = 5;
 	health = SIMON_MAX_HEALTH;
@@ -46,13 +46,18 @@ CSimon::CSimon()
 	time = DEFAULT_STATE_TIME;
 
 	isOnGround = false;
+	isJumping = false;
 	isOnStair = false;
 	lockUpdate = false;
 	caculateScore = false;
+	isFalling = false;
 
 	currentStair = NULL;
 	colidingStair = NULL;
+	colidingWall = NULL;
 
+	fallingStart = 0;
+	fallSitStart = 0;
 	attackSubStart = 0;
 	jumpStart = 0;
 	untouchableStart = 0;
@@ -63,7 +68,7 @@ CSimon::CSimon()
 	timeStart = GetTickCount();
 
 	wMapStart = 0;
-	wMapEnd = 100;
+	wMapEnd = 1;
 
 	checkPoint.x = 30.0f;
 	checkPoint.y = 183.0f;
@@ -117,13 +122,28 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		else
 		{
 			//move to next scene
-			calculateStart = 0;
 		}
 	}
 
 	// Simple fall down
 	if(!isOnStair)
 		vy += SIMON_GRAVITY * dt;
+
+	if (!isJumping && colidingWall && !isOnStair)
+	{
+		float wl, wt, wr, wb, sl, st, sr, sb;
+		colidingWall->GetBoundingBox(wl, wt, wr, wb);
+		GetBoundingBox(sl, st, sr, sb);
+		if (sr < wl || sl > wr)
+		{
+			state = SIMON_STATE_IDLE;
+			isFalling = true;
+			vx = 0;
+			vy = SIMON_FALLING_SPEED_Y;
+			if (fallingStart == 0)
+				fallingStart = GetTickCount();
+		}
+	}
 
 	// get wall && brick objects
 	vector<LPGAMEOBJECT> wallObjects;
@@ -154,8 +174,9 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		float min_tx, min_ty, nx = 0, ny = 0;
 		int idx, idy;
+		LPGAMEOBJECT objectx = NULL, objecty = NULL;
 
-		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, objectx, objecty);
 
 			x += min_tx * dx + nx * 0.11f;		// nx*0.1f : need to push out a bit to avoid overlapping next frame
 			y += min_ty * dy + ny * 0.10f;
@@ -168,6 +189,19 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				vy = 0;
 				if (!isOnGround) isOnGround = true;
+				colidingWall = objecty;
+				isJumping = false;
+				if (isFalling)
+				{
+					isFalling = false;
+					if (GetTickCount() - fallingStart > SIMON_FALL_HIGHT_TIME_START && fallingStart > 0)
+					{
+						fallSitStart = GetTickCount();
+						state = SIMON_STATE_SIT;
+					}
+					fallingStart = 0;
+				}
+				
 			}
 			else y += dy;
 
@@ -204,6 +238,10 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 	}
 
+	// reset falling sit state
+	if (GetTickCount() - fallSitStart > SIMON_FALL_SIT_TIME && fallSitStart > 0)
+		fallSitStart = 0;
+
 	// reset untouchable timer if untouchable time has passed
 	if (GetTickCount() - untouchableStart > SIMON_UNTOUCHABLE_TIME && untouchableStart > 0)
 		untouchableStart = 0;
@@ -233,7 +271,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		lyingStart = 0;
 		if (life > 0)
-			Respawn();
+			Respawn(coObjects);
 		else
 		{
 			// move to next scene
@@ -248,7 +286,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		timeStart = GetTickCount();
 		if (time > 0)
 			time--;
-		if (time == 0 && state != SIMON_STATE_DIE)
+		if (time == 0 && state != SIMON_STATE_DIE && calculateStart == 0)
 		{
 			health = 0;
 			state = SIMON_STATE_DIE;
@@ -440,6 +478,7 @@ void CSimon::UpdateWhip(DWORD dt, vector<LPGAMEOBJECT>* objects)
 	{
 		attackStart = 0;
 		state = state == SIMON_STATE_SIT_ATTACK ? SIMON_STATE_SIT : SIMON_STATE_IDLE;
+		whip->ResetAnimation();
 	}
 }
 
@@ -563,6 +602,7 @@ void CSimon::ColideWithObject(LPGAMEOBJECT obj, vector<LPGAMEOBJECT>* objects)
 		state = SIMON_STATE_DIE;
 		vx = 0;
 		lyingStart = GetTickCount();
+		AddPosition(0, 100);
 		break;
 	}
 	case ID_DOOR:
@@ -609,6 +649,8 @@ void CSimon::ColideWithObject(LPGAMEOBJECT obj, vector<LPGAMEOBJECT>* objects)
 
 void CSimon::SetState(int state)
 {
+	if (isFalling || fallSitStart > 0)
+		return;
 	if (flashStart > 0)
 		return;
 	if (attackStart > 0)
@@ -670,6 +712,8 @@ void CSimon::StartAttack()
 		return;
 	if (attackSubStart > 0)
 		return;
+	if (isFalling || fallSitStart > 0)
+		return;
 
 	if (state != SIMON_STATE_JUMP)
 		vx = 0;
@@ -687,6 +731,9 @@ void CSimon::StartAttack()
 
 void CSimon::StartAttackSub(vector<LPGAMEOBJECT>* objects)
 {
+	if (isFalling || fallSitStart > 0)
+		return;
+
 	if (GetSubWeapon().size() >= subweaponLevel)
 		return;
 
@@ -758,6 +805,7 @@ void CSimon::StartJump()
 {
 	SetState(SIMON_STATE_JUMP);
 	isOnGround = false;
+	isJumping = true;
 }
 
 void CSimon::StartInvisibility()
@@ -802,6 +850,8 @@ void CSimon::AddScore(int score)
 
 void CSimon::BeDamaged()
 {
+	if (untouchableStart > 0)
+		return;
 	health -= 2;
 	if (health <= 0)
 	{
@@ -823,8 +873,11 @@ void CSimon::BeDamaged()
 	}
 }
 
-void CSimon::Respawn()
+void CSimon::Respawn(vector<LPGAMEOBJECT> *objects)
 {
+	for (auto iter : *objects)
+		if (iter->GetId() == ID_BOSS_PHANTOM_BAT)
+			iter->Reset();
 	life -= 1;
 	time = 300;
 	health = SIMON_MAX_HEALTH;
@@ -832,6 +885,9 @@ void CSimon::Respawn()
 	nx = 1;
 	x = checkPoint.x;
 	y = checkPoint.y;
+	wMapStart = x / 16;
+	wMapEnd = wMapStart + 1;
+	
 	UnlockUpdate();
 }
 

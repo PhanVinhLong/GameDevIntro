@@ -340,7 +340,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -973,12 +973,12 @@
                  "type":"stair",
                  "visible":true,
                  "width":5,
-                 "x":2758,
+                 "x":2762,
                  "y":268
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -988,7 +988,7 @@
          "name":"water",
          "objects":[
                 {
-                 "height":23,
+                 "height":17,
                  "id":152,
                  "name":"water-01",
                  "rotation":0,
@@ -996,11 +996,11 @@
                  "visible":true,
                  "width":525,
                  "x":1539,
-                 "y":505
+                 "y":511
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -2727,12 +2727,12 @@
                         {
                          "name":"wbegin",
                          "type":"int",
-                         "value":161
+                         "value":160
                         }, 
                         {
                          "name":"wend",
                          "type":"int",
-                         "value":177
+                         "value":176
                         }],
                  "rotation":0,
                  "type":"mapset",

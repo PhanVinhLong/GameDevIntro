@@ -45,8 +45,9 @@ void CItem::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	{
 		float min_tx, min_ty, nx = 0, ny;
 		int idx, idy;
+		LPGAMEOBJECT objectx = NULL, objecty = NULL;
 
-		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, objectx, objecty);
 
 		// block 
 		y += min_ty * dy + ny * 0.4f;

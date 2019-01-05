@@ -17,15 +17,18 @@
 #define PHANTOM_BAT_STATE_ACTIVE		1
 #define PHANTOM_BAT_STATE_ON_FIRE		2
 
-#define PHANTOM_BAT_ANI_IDLE			0
-#define PHANTOM_BAT_ANI_ACTIVE			1
-#define PHANTOM_BAT_ANI_ON_FIRE			2
+#define PHANTOM_BAT_ANI_IDLE				0
+#define PHANTOM_BAT_ANI_ACTIVE				1
+#define PHANTOM_BAT_ANI_ON_FIRE				2
+#define PHANTOM_BAT_ANI_BE_ATTACK_EFFECT	3
 
-#define PHANTOM_BAT_IDLE_TIME			1500
-#define PHANTOM_BAT_ATTACK_TIME			1200
-#define PHANTOM_BAT_BACK_TIME			1200
-#define PHANTOM_BAT_UNTOUCHABLE_TIME	500
-#define PHANTOM_BAT_ON_FIRE_TIME		1000
+#define PHANTOM_BAT_IDLE_TIME				1500
+#define PHANTOM_BAT_ATTACK_TIME				1200
+#define PHANTOM_BAT_BACK_TIME				1200
+#define PHANTOM_BAT_UNTOUCHABLE_TIME		500
+#define PHANTOM_BAT_ON_FIRE_TIME			1000
+#define PHANTOM_BAT_DEFLECT_TIME			100
+#define PHANTOM_BAT_BE_ATTACK_EFFECT_TIME	500
 
 class CPhantomBat :
 	public CGameObject
@@ -37,6 +40,11 @@ class CPhantomBat :
 	DWORD startBack;
 	DWORD startOnFire;
 	DWORD startUntouchable;
+	DWORD startDeflect;
+	DWORD startBeAttackEffect;
+
+	float defaultx;
+	float defaulty;
 public:
 	CPhantomBat(D3DXVECTOR2 position);
 	~CPhantomBat();
@@ -46,5 +54,6 @@ public:
 	virtual void Render();
 	
 	virtual void BeDamaged();
+	void Reset();
 };
 

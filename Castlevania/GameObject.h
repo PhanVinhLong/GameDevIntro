@@ -76,7 +76,9 @@ public:
 		float &min_tx,
 		float &min_ty,
 		float &nx,
-		float &ny);
+		float &ny,
+		LPGAMEOBJECT &objx,
+		LPGAMEOBJECT &objy);
 
 	void AddAnimation(int aniId);
 
@@ -91,6 +93,7 @@ public:
 	virtual void Start() {}
 	virtual void BeDamaged();
 	virtual void StartStopWatch();
+	virtual void Reset();
 
 	int GetNx();
 	int GetNy();

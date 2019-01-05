@@ -1,7 +1,7 @@
 #pragma once
 #include "Item.h"
 
-#define MULTI_SHOOT_ITEM_GRAVITY			0.0004f
+#define MULTI_SHOOT_ITEM_GRAVITY			0.0003f
 #define MULTI_SHOOT_ITEM_BBOX_WIDTH			15
 #define MULTI_SHOOT_ITEM_BBOX_HEIGHT		15
 

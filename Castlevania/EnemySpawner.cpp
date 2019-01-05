@@ -17,7 +17,7 @@ void CEnemySpawner::SpawnEnemy(vector<LPGAMEOBJECT>* objects)
 	}
 	case ID_BAT:
 	{
-		float posX = playerNx > 0 ? vr - BAT_BBOX_WIDTH + 5 : vl + 5;
+		float posX = playerNx > 0 ? vr - BAT_BBOX_WIDTH + 5 : vl + 5; // +-5 to make sure enemy do not out of viewport
 		CBat* bat = new CBat({ posX, spawnHeight - 40 }, -playerNx, ID_ITEM_SMALL_HEART);
 		objects->push_back(bat);
 		break;
@@ -105,7 +105,7 @@ void CEnemySpawner::Update(DWORD dt, vector<LPGAMEOBJECT>* objects)
 
 			int tmp = 0;
 			for (auto iter : *objects)
-				if (iter->GetId() == enemyId)
+				if (iter->GetId() == enemyId && iter->GetState() == ENEMY_STATE_ACTIVE)
 					tmp++;
 
 			if (tmp < num && stopWatchStart == 0)

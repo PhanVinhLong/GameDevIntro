@@ -19,6 +19,7 @@
 
 #define SIMON_WALKING_SPEED				0.06f
 #define SIMON_ON_STAIR_SPEED			0.037f
+#define SIMON_FALLING_SPEED_Y			0.45f
 #define SIMON_JUMP_SPEED_Y				0.21f
 #define SIMON_JUMP_DEFLECT_SPEED		0.1f
 #define SIMON_GRAVITY					0.0006f
@@ -82,6 +83,8 @@
 #define SIMON_INVISIBILITY_TIME		8000
 #define SIMON_FLASH_TIME			1000
 #define SIMON_LYING_TIME			2000
+#define SIMON_FALL_SIT_TIME			200
+#define SIMON_FALL_HIGHT_TIME_START	90
 
 class CSimon : public CGameObject
 {
@@ -112,10 +115,13 @@ class CSimon : public CGameObject
 	DWORD lyingStart;
 	DWORD timeStart;
 	DWORD calculateStart;
+	DWORD fallSitStart;
+	DWORD fallingStart;
 
 	CWhip* whip;
 	CStair* currentStair;
 	CStair* colidingStair;
+	LPGAMEOBJECT colidingWall;
 	vector<CWeapon*> subWeapon;
 	int subWeaponID;
 	int subweaponLevel;
@@ -162,7 +168,7 @@ public:
 	void AddScore(int score);
 
 	void BeDamaged();
-	void Respawn();
+	void Respawn(vector<LPGAMEOBJECT> *objects);
 
 	void StartAttack();
 	void StartAttackSub(vector<LPGAMEOBJECT>* objects);
